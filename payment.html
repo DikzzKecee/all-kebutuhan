@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Neoxr - Dikzz — VVIP Payment</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="bg-glow"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+
+    <a class="brand" href="index.html">
+      <span>◉</span>
+      Neoxr - Dikzz
+    </a>
+
+    <nav id="navbarNav">
+
+      <a href="index.html">
+        Profile
+      </a>
+
+      <a href="tools.html">
+        Tools
+      </a>
+
+      <a
+        class="active vvip-link"
+        href="payment.html"
+      >
+        VVIP ↗
+      </a>
+
+    </nav>
+
+    <button
+      class="menu-btn"
+      type="button"
+      onclick="toggleNav()"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- ================= MAIN ================= -->
+  <main class="container payment-page">
+
+    <!-- HERO -->
+    <section class="payment-hero">
+
+      <div class="crown-big">
+        ♛
+      </div>
+
+      <small>
+        PREMIUM ACCESS
+      </small>
+
+      <h1>
+        Upgrade to
+        <span>VVIP</span>
+      </h1>
+
+      <p>
+        Unlock fitur premium, limit lebih tinggi,
+        dan akses tools eksklusif.
+      </p>
+
+    </section>
+
+
+    <!-- PLANS -->
+    <section class="plans">
+
+
+      <!-- BASIC -->
+      <article class="plan">
+
+        <small>VVIP BASIC</small>
+
+        <h2>Rp10K</h2>
+
+        <span>/ 30 hari</span>
+
+        <ul>
+          <li>✓ Premium tools</li>
+          <li>✓ Limit lebih tinggi</li>
+          <li>✓ Priority processing</li>
+        </ul>
+
+        <button
+          type="button"
+          onclick="selectPlan('VVIP Basic - Rp10K')"
+        >
+          Pilih Paket
+        </button>
+
+      </article>
+
+
+      <!-- PRO -->
+      <article class="plan featured">
+
+        <div class="popular">
+          POPULAR
+        </div>
+
+        <small>VVIP PRO</small>
+
+        <h2>Rp25K</h2>
+
+        <span>/ 90 hari</span>
+
+        <ul>
+          <li>✓ Semua fitur Basic</li>
+          <li>✓ Limit sangat tinggi</li>
+          <li>✓ Akses tools eksklusif</li>
+        </ul>
+
+        <button
+          type="button"
+          onclick="selectPlan('VVIP Pro - Rp25K')"
+        >
+          Pilih Paket
+        </button>
+
+      </article>
+
+
+      <!-- LIFETIME -->
+      <article class="plan">
+
+        <small>VVIP LIFETIME</small>
+
+        <h2>Rp50K</h2>
+
+        <span>/ Lifetime</span>
+
+        <ul>
+          <li>✓ Semua fitur Pro</li>
+          <li>✓ Tanpa masa aktif</li>
+          <li>✓ Priority support</li>
+        </ul>
+
+        <button
+          type="button"
+          onclick="selectPlan('VVIP Lifetime - Rp50K')"
+        >
+          Pilih Paket
+        </button>
+
+      </article>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+    <section class="payment-box">
+
+      <div class="section-title">
+
+        <span>₿</span>
+
+        <div>
+          <small>PAYMENT</small>
+          <h2>Pembayaran VVIP</h2>
+        </div>
+
+      </div>
+
+
+      <div class="methods">
+
+        <div>
+          <b>QRIS</b>
+          <span>
+            Scan QR untuk membayar.
+          </span>
+        </div>
+
+        <div>
+          <b>DANA</b>
+          <span>
+            Nomor pembayaran:
+            08xxxxxxxxxx
+          </span>
+        </div>
+
+        <div>
+          <b>GOPAY</b>
+          <span>
+            Nomor pembayaran:
+            08xxxxxxxxxx
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="notice">
+        ⚠️ Ganti data pembayaran di atas
+        dengan akun atau QRIS milikmu sebelum
+        website dipakai.
+      </div>
+
+
+      <div
+        class="selected"
+        id="selectedPlan"
+      >
+        Belum ada paket dipilih.
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 Neoxr - Dikzz • VVIP Center
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

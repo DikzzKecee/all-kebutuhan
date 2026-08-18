@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Neoxr - Dikzz — Tools</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="bg-glow"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+
+    <a class="brand" href="index.html">
+      <span>◉</span>
+      Neoxr - Dikzz
+    </a>
+
+    <nav id="navbarNav">
+      <a href="index.html">Profile</a>
+      <a class="active" href="tools.html">Tools</a>
+      <a class="vvip-link" href="payment.html">VVIP ↗</a>
+    </nav>
+
+    <button
+      class="menu-btn"
+      type="button"
+      onclick="toggleNav()"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- ================= MAIN ================= -->
+  <main class="container">
+
+    <!-- MINI PROFILE -->
+    <section class="mini-profile">
+
+      <div class="avatar small">
+        <img
+          src="assets/image/foto index.jpg"
+          alt="Neoxr - Dikzz"
+        >
+      </div>
+
+      <div>
+        <strong>Neoxr - Dikzz</strong>
+        <span>@yth.tuan_dikzz • Online</span>
+      </div>
+
+      <a class="outline-btn" href="index.html">
+        View Profile
+      </a>
+
+    </section>
+
+
+    <!-- TOOLS HEADER -->
+    <section class="tools-head">
+
+      <div>
+
+        <small>UTILITY CENTER</small>
+
+        <h1>Semua Tools</h1>
+
+        <p>
+          Download, generator, converter,
+          calculator, sticker dan berbagai utility lainnya.
+        </p>
+
+      </div>
+
+      <div class="search">
+
+        <span>⌕</span>
+
+        <input
+          id="search"
+          type="search"
+          autocomplete="off"
+          placeholder="Cari tools..."
+          oninput="filterTools()"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORY -->
+    <div class="categories">
+
+      <button
+        class="cat active-cat"
+        type="button"
+        onclick="filterCat('all', this)"
+      >
+        All
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        onclick="filterCat('download', this)"
+      >
+        Download
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        onclick="filterCat('generator', this)"
+      >
+        Generator
+      </button>
+
+      <button
+        class="cat"
+        type="button"
+        onclick="filterCat('utility', this)"
+      >
+        Utility
+      </button>
+
+    </div>
+
+
+    <!-- ================= TOOL GRID ================= -->
+    <section id="toolGrid" class="tool-grid">
+
+
+      <!-- TIKTOK -->
+      <article
+        class="tool-card"
+        data-cat="download"
+        data-name="tiktok downloader tiktok"
+      >
+
+        <div class="tool-icon pink">♪</div>
+
+        <div>
+          <h3>TikTok Downloader</h3>
+          <p>Download video, foto & audio.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="openDownloader('TikTok Downloader')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- YOUTUBE -->
+      <article
+        class="tool-card"
+        data-cat="download"
+        data-name="youtube downloader youtube"
+      >
+
+        <div class="tool-icon red">▶</div>
+
+        <div>
+          <h3>YouTube Downloader</h3>
+          <p>Download video & audio.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="openDownloader('YouTube Downloader')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- INSTAGRAM -->
+      <article
+        class="tool-card"
+        data-cat="download"
+        data-name="instagram downloader instagram reels story"
+      >
+
+        <div class="tool-icon purple">◎</div>
+
+        <div>
+          <h3>Instagram Downloader</h3>
+          <p>Reels, post, story & media.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="openDownloader('Instagram Downloader')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- TERABOX -->
+      <article
+        class="tool-card"
+        data-cat="download"
+        data-name="terabox downloader terabox"
+      >
+
+        <div class="tool-icon blue">▣</div>
+
+        <div>
+          <h3>TeraBox Downloader</h3>
+          <p>Ambil file dari link share.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="openDownloader('TeraBox Downloader')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- IQC -->
+      <article
+        class="tool-card"
+        data-cat="generator"
+        data-name="iqc generator chat"
+      >
+
+        <div class="tool-icon cyan">▤</div>
+
+        <div>
+          <h3>IQC Generator</h3>
+          <p>Buat template chat image.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('IQC Generator')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- WINDOWS -->
+      <article
+        class="tool-card"
+        data-cat="generator"
+        data-name="windows quotes windows quote"
+      >
+
+        <div class="tool-icon blue">⊞</div>
+
+        <div>
+          <h3>Windows Quotes</h3>
+          <p>Buat quote bergaya Windows.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('Windows Quotes')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- BRAT -->
+      <article
+        class="tool-card"
+        data-cat="generator"
+        data-name="brat generator brat"
+      >
+
+        <div class="tool-icon green">B</div>
+
+        <div>
+          <h3>Brat Generator</h3>
+          <p>Buat gambar teks gaya brat.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('Brat Generator')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- QR -->
+      <article
+        class="tool-card"
+        data-cat="generator"
+        data-name="qr generator qr code"
+      >
+
+        <div class="tool-icon orange">⌗</div>
+
+        <div>
+          <h3>QR Generator</h3>
+          <p>Generate QR dari teks atau URL.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('QR Generator')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- IMAGE COMPRESSOR -->
+      <article
+        class="tool-card"
+        data-cat="utility"
+        data-name="image compressor compress gambar"
+      >
+
+        <div class="tool-icon yellow">▧</div>
+
+        <div>
+          <h3>Image Compressor</h3>
+          <p>Kompres gambar dengan mudah.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('Image Compressor')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- URL SHORTENER -->
+      <article
+        class="tool-card"
+        data-cat="utility"
+        data-name="url shortener link"
+      >
+
+        <div class="tool-icon violet">↗</div>
+
+        <div>
+          <h3>URL Shortener</h3>
+          <p>Persingkat link panjang.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('URL Shortener')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- STICKER -->
+      <article
+        class="tool-card"
+        data-cat="generator"
+        data-name="sticker maker whatsapp sticker wa stc"
+        onclick="openTool('sticker')"
+      >
+
+        <div class="tool-icon pink">✦</div>
+
+        <div>
+          <h3>WhatsApp Sticker</h3>
+          <p>Buat sticker WA dari gambar.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="event.stopPropagation(); openTool('sticker')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- CALCULATOR -->
+      <article
+        class="tool-card"
+        data-cat="utility"
+        data-name="calculator kalkulator hitung"
+        onclick="openTool('calculator')"
+      >
+
+        <div class="tool-icon cyan">＋</div>
+
+        <div>
+          <h3>Calculator</h3>
+          <p>Kalkulator cepat untuk hitungan.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="event.stopPropagation(); openTool('calculator')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+
+      <!-- BASE64 -->
+      <article
+        class="tool-card"
+        data-cat="utility"
+        data-name="base64 converter encode decode"
+      >
+
+        <div class="tool-icon gray">⌘</div>
+
+        <div>
+          <h3>Base64 Converter</h3>
+          <p>Encode dan decode Base64.</p>
+        </div>
+
+        <button
+          class="tool-open"
+          type="button"
+          onclick="showComingSoon('Base64 Converter')"
+        >
+          Buka
+        </button>
+
+      </article>
+
+    </section>
+
+
+    <!-- NO RESULT -->
+    <div
+      id="noResult"
+      class="no-result"
+    >
+      Tidak ada tools yang ditemukan.
+    </div>
+
+
+    <!-- UPGRADE -->
+    <div class="upgrade-banner">
+
+      <div>
+
+        <span class="crown">♛</span>
+
+        <div>
+          <small>NEED MORE?</small>
+
+          <h2>Unlock VVIP Tools</h2>
+
+          <p>
+            Dapatkan akses fitur premium
+            dan limit lebih tinggi.
+          </p>
+        </div>
+
+      </div>
+
+      <a
+        class="primary-btn"
+        href="payment.html"
+      >
+        Upgrade VVIP →
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= TOOL MODAL ================= -->
+  <div
+    class="tool-modal"
+    id="toolModal"
+    onclick="if(event.target === this) closeTool()"
+  >
+
+    <div class="tool-modal-box">
+
+      <button
+        class="modal-close"
+        type="button"
+        onclick="closeTool()"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+
+      <!-- CALCULATOR -->
+      <div
+        id="calculatorTool"
+        class="tool-panel"
+      >
+
+        <small>UTILITY</small>
+
+        <h2>Calculator</h2>
+
+        <div
+          class="calc-screen"
+          id="calcScreen"
+        >
+          0
+        </div>
+
+        <div class="calc-grid">
+
+          <button onclick="calcInput('7')">7</button>
+          <button onclick="calcInput('8')">8</button>
+          <button onclick="calcInput('9')">9</button>
+          <button class="op" onclick="calcInput('/')">÷</button>
+
+          <button onclick="calcInput('4')">4</button>
+          <button onclick="calcInput('5')">5</button>
+          <button onclick="calcInput('6')">6</button>
+          <button class="op" onclick="calcInput('*')">×</button>
+
+          <button onclick="calcInput('1')">1</button>
+          <button onclick="calcInput('2')">2</button>
+          <button onclick="calcInput('3')">3</button>
+          <button class="op" onclick="calcInput('-')">−</button>
+
+          <button onclick="calcInput('0')">0</button>
+          <button onclick="calcInput('.')">.</button>
+          <button onclick="calcClear()">C</button>
+          <button class="op" onclick="calcInput('+')">+</button>
+
+          <button
+            class="equals"
+            onclick="calcResult()"
+          >
+            =
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- STICKER -->
+      <div
+        id="stickerTool"
+        class="tool-panel"
+      >
+
+        <small>GENERATOR</small>
+
+        <h2>WhatsApp Sticker</h2>
+
+        <p class="panel-desc">
+          Upload gambar, tambahkan teks jika mau,
+          lalu export sebagai WebP untuk sticker WA.
+        </p>
+
+        <input
+          id="stickerFile"
+          type="file"
+          accept="image/*"
+          onchange="loadSticker(event)"
+        >
+
+        <div class="sticker-options">
+
+          <input
+            id="stickerText"
+            type="text"
+            placeholder="Teks sticker (opsional)"
+            maxlength="80"
+          >
+
+          <button
+            class="primary-btn"
+            type="button"
+            onclick="drawSticker()"
+          >
+            Preview
+          </button>
+
+          <button
+            class="outline-btn"
+            type="button"
+            onclick="downloadSticker()"
+          >
+            Download WebP
+          </button>
+
+        </div>
+
+        <canvas
+          id="stickerCanvas"
+          width="512"
+          height="512"
+        ></canvas>
+
+      </div>
+
+
+      <!-- DOWNLOADER -->
+      <div
+        id="downloaderTool"
+        class="tool-panel"
+      >
+
+        <small>DOWNLOADER</small>
+
+        <h2 id="downloaderTitle">
+          Downloader
+        </h2>
+
+        <p class="panel-desc">
+          Masukkan link yang ingin diproses.
+          Endpoint API dapat disambungkan pada bagian
+          JavaScript setelah API downloader tersedia.
+        </p>
+
+        <input
+          id="downloadUrl"
+          class="tool-input"
+          type="url"
+          placeholder="https://..."
+        >
+
+        <button
+          class="primary-btn full-btn"
+          type="button"
+          onclick="processDownloader()"
+        >
+          Process →
+        </button>
+
+        <div
+          id="downloadResult"
+          class="download-result"
+        ></div>
+
+      </div>
+
+
+      <!-- COMING SOON -->
+      <div
+        id="comingSoonTool"
+        class="tool-panel"
+      >
+
+        <small>UTILITY</small>
+
+        <h2 id="comingSoonTitle">
+          Tool
+        </h2>
+
+        <div class="coming-soon">
+          <span>⚡</span>
+          <strong>Coming Soon</strong>
+          <p>
+            Tool ini sedang disiapkan.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <footer>
+    © 2026 Neoxr - Dikzz • Tools Center
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
