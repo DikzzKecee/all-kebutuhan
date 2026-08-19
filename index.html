@@ -2,7 +2,6 @@
 <html lang="id">
 
 <head>
-
   <meta charset="UTF-8">
 
   <meta
@@ -10,97 +9,19 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Dikzz Tools</title>
+  <title>Dikzz Tools — Profile</title>
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
 <div class="bg-glow"></div>
 
 
-<!-- =====================================================
-     LOGIN SCREEN
-====================================================== -->
-
-<div
-  id="loginScreen"
-  class="login-overlay"
->
-
-  <section class="login-card glass">
-
-    <div class="login-logo">
-      ◉
-    </div>
-
-    <small class="login-label">
-      DIKZZ TOOLS
-    </small>
-
-    <h1>
-      WELCOME
-    </h1>
-
-    <p>
-      Login untuk menggunakan semua tools
-      yang tersedia.
-    </p>
-
-
-    <form id="loginForm">
-
-      <label for="loginEmail">
-        Email
-      </label>
-
-      <input
-        id="loginEmail"
-        name="email"
-        type="email"
-        placeholder="nama@email.com"
-        autocomplete="email"
-        required
-      >
-
-
-      <button
-        id="loginButton"
-        class="primary-btn login-button"
-        type="submit"
-      >
-        Login →
-      </button>
-
-    </form>
-
-
-    <div
-      id="loginMessage"
-      class="login-message"
-    ></div>
-
-
-    <div class="login-note">
-      🇮🇩 Indonesia
-    </div>
-
-  </section>
-
-</div>
-
-
-<!-- =====================================================
-     MAIN WEBSITE
-====================================================== -->
-
-<div id="mainWebsite">
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
 <header class="navbar">
 
@@ -138,6 +59,7 @@
 
   <button
     class="menu-btn"
+    type="button"
     onclick="toggleNav()"
     aria-label="Menu"
   >
@@ -147,333 +69,433 @@
 </header>
 
 
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
 <main class="container">
 
 
-<section class="profile-hero">
+  <!-- =======================================================
+       PROFILE
+  ======================================================== -->
 
-  <div class="cover">
+  <section class="profile-hero">
 
-    <div class="cover-grid"></div>
+    <div class="cover">
 
-  </div>
-
-
-  <div class="profile-card">
-
-    <div class="avatar">
-
-      <img
-        src="assets/image/foto index.jpg"
-        alt="Dikzz"
-      >
+      <div class="cover-grid"></div>
 
     </div>
 
 
-    <div class="profile-main">
+    <div class="profile-card">
 
-      <div class="name-row">
+      <!-- FOTO PROFILE -->
 
-        <h1>
-          Dikzz
-        </h1>
+      <div class="avatar">
 
-        <span class="verified">
-          ✓
-        </span>
+        <img
+          src="assets/image/foto%20index.jpg"
+          alt="Foto Profile Dikzz"
+        >
 
       </div>
 
 
-      <div class="handle">
-        @yth.tuan_dikzz
+      <!-- PROFILE INFO -->
+
+      <div class="profile-main">
+
+        <div class="name-row">
+
+          <h1>
+            Dikzz
+          </h1>
+
+          <span
+            class="verified"
+            title="Verified"
+          >
+            ✓
+          </span>
+
+        </div>
+
+
+        <div class="handle">
+          @dikzz
+        </div>
+
+
+        <div class="region">
+          🇮🇩 Indonesia
+        </div>
+
+
+        <p class="bio">
+          Welcome to Dikzz Tools.
+          A simple utility center for downloading,
+          generating, converting, and other useful
+          tools in one place.
+        </p>
+
+
+        <div class="badges">
+
+          <span>
+            ⚡ Utility
+          </span>
+
+          <span>
+            🛠️ Tools
+          </span>
+
+          <span>
+            🇮🇩 Indonesia
+          </span>
+
+        </div>
+
       </div>
 
 
-      <div class="region">
-        🇮🇩 Indonesia
-      </div>
+      <!-- BUTTON -->
 
+      <div>
 
-      <p class="bio">
-
-        Personal utility website untuk downloader,
-        generator, converter, calculator dan berbagai
-        tools lainnya.
-
-      </p>
-
-
-      <div class="badges">
-
-        <span>
-          ⚡ Online
-        </span>
-
-        <span id="planBadge">
-          FREE USER
-        </span>
-
-        <span id="limitBadge">
-          50x / hari
-        </span>
+        <a
+          class="primary-btn"
+          href="tools.html"
+        >
+          Open Tools →
+        </a>
 
       </div>
 
     </div>
 
-
-    <a
-      class="primary-btn"
-      href="tools.html"
-    >
-      Open Tools →
-    </a>
-
-  </div>
-
-</section>
+  </section>
 
 
-<section class="stats">
 
-  <div>
+  <!-- =======================================================
+       STATS
+  ======================================================== -->
 
-    <b id="statPlan">
-      FREE
-    </b>
-
-    <span>
-      Account
-    </span>
-
-  </div>
-
-
-  <div>
-
-    <b id="statUsage">
-      0
-    </b>
-
-    <span>
-      Used Today
-    </span>
-
-  </div>
-
-
-  <div>
-
-    <b id="statRemaining">
-      50
-    </b>
-
-    <span>
-      Remaining
-    </span>
-
-  </div>
-
-
-  <div>
-
-    <b id="statLimit">
-      50
-    </b>
-
-    <span>
-      Daily Limit
-    </span>
-
-  </div>
-
-</section>
-
-
-<section class="section">
-
-  <div class="section-title">
-
-    <span>◈</span>
+  <section class="stats">
 
     <div>
 
-      <small>
-        ABOUT
-      </small>
+      <b>
+        11+
+      </b>
 
-      <h2>
-        Tentang Website
-      </h2>
+      <span>
+        Available Tools
+      </span>
 
     </div>
 
-  </div>
+
+    <div>
+
+      <b>
+        24/7
+      </b>
+
+      <span>
+        Availability
+      </span>
+
+    </div>
 
 
-  <div class="about glass">
+    <div>
 
-    <p>
+      <b>
+        50x
+      </b>
 
-      Dikzz Tools dibuat sebagai pusat utility
-      sederhana dengan tampilan dark purple
-      yang ringan dan responsive.
+      <span>
+        Free Daily Limit
+      </span>
 
-    </p>
+    </div>
+
+
+    <div>
+
+      <b>
+        VVIP
+      </b>
+
+      <span>
+        Premium Access
+      </span>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       ABOUT
+  ======================================================== -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>
+        ✦
+      </span>
+
+      <div>
+
+        <small>
+          ABOUT
+        </small>
+
+        <h2>
+          Tentang Dikzz Tools
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="about glass">
+
+      <p>
+        Dikzz Tools adalah utility center yang
+        menyediakan berbagai tools praktis untuk
+        kebutuhan sehari-hari. Mulai dari downloader,
+        generator, calculator, image tools, sampai
+        berbagai utility lainnya.
+      </p>
+
+
+      <div class="quick-links">
+
+        <a href="tools.html">
+          🛠️ Lihat Semua Tools
+        </a>
+
+        <a href="payment.html">
+          ♛ Upgrade VVIP
+        </a>
+
+        <a
+          href="https://instagram.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ◎ Instagram
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       ACCOUNT
+  ======================================================== -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>
+        ◉
+      </span>
+
+      <div>
+
+        <small>
+          ACCOUNT
+        </small>
+
+        <h2>
+          Informasi Account
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="account-box glass">
+
+      <div>
+
+        <span class="account-label">
+          EMAIL
+        </span>
+
+        <strong id="accountEmail">
+          Guest
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span class="account-label">
+          PLAN
+        </span>
+
+        <strong id="accountPlan">
+          FREE USER
+        </strong>
+
+      </div>
+
+
+      <div>
+
+        <span class="account-label">
+          DAILY LIMIT
+        </span>
+
+        <strong id="accountLimit">
+          50x / hari
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       USAGE
+  ======================================================== -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>
+        ◈
+      </span>
+
+      <div>
+
+        <small>
+          USAGE
+        </small>
+
+        <h2>
+          Penggunaan Hari Ini
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <div class="usage-box glass">
+
+      <div class="usage-info">
+
+        <span>
+          Usage
+        </span>
+
+        <strong id="usageText">
+          0 / 50
+        </strong>
+
+      </div>
+
+
+      <div class="usage-bar">
+
+        <div
+          id="usageProgress"
+          class="usage-progress"
+          style="width:0%;"
+        ></div>
+
+      </div>
+
+
+      <small id="remainingText">
+        Sisa 50 penggunaan hari ini.
+      </small>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       QUICK ACTION
+  ======================================================== -->
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>
+        ⚡
+      </span>
+
+      <div>
+
+        <small>
+          QUICK ACCESS
+        </small>
+
+        <h2>
+          Mulai Sekarang
+        </h2>
+
+      </div>
+
+    </div>
 
 
     <div class="quick-links">
 
-      <a href="tools.html">
-        ⚡ Semua Tools
-      </a>
-
-      <a href="payment.html">
-        ♛ VVIP Plans
-      </a>
-
-      <button
+      <a
         class="quick-link-button"
-        onclick="logout()"
+        href="tools.html"
       >
-        ⇥ Logout
-      </button>
+        🛠️ Buka Tools
+      </a>
+
+
+      <a
+        class="quick-link-button"
+        href="payment.html"
+      >
+        ♛ Lihat VVIP
+      </a>
 
     </div>
 
-  </div>
-
-</section>
-
-
-<section class="section">
-
-  <div class="section-title">
-
-    <span>◎</span>
-
-    <div>
-
-      <small>
-        ACCOUNT
-      </small>
-
-      <h2>
-        Status Akun
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div class="account-box glass">
-
-    <div>
-
-      <span class="account-label">
-        EMAIL
-      </span>
-
-      <strong id="accountEmail">
-        Loading...
-      </strong>
-
-    </div>
-
-
-    <div>
-
-      <span class="account-label">
-        PLAN
-      </span>
-
-      <strong id="accountPlan">
-        FREE USER
-      </strong>
-
-    </div>
-
-
-    <div>
-
-      <span class="account-label">
-        DAILY LIMIT
-      </span>
-
-      <strong id="accountLimit">
-        50x
-      </strong>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section">
-
-  <div class="section-title">
-
-    <span>◷</span>
-
-    <div>
-
-      <small>
-        USAGE
-      </small>
-
-      <h2>
-        Penggunaan Hari Ini
-      </h2>
-
-    </div>
-
-  </div>
-
-
-  <div class="usage-box glass">
-
-    <div class="usage-info">
-
-      <span>
-        Terpakai hari ini
-      </span>
-
-      <strong id="miniUsage">
-        0 / 50
-      </strong>
-
-    </div>
-
-
-    <div class="usage-bar">
-
-      <div
-        id="usageProgress"
-        class="usage-progress"
-      ></div>
-
-    </div>
-
-
-    <small>
-
-      Limit otomatis kembali penuh setiap
-      pukul 00:00 WIB.
-
-    </small>
-
-  </div>
-
-</section>
-
+  </section>
 
 </main>
 
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
@@ -481,8 +503,11 @@
 
 </footer>
 
-</div>
 
+
+<!-- =========================================================
+     SCRIPT
+========================================================= -->
 
 <script src="script.js"></script>
 

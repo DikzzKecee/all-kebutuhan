@@ -23,11 +23,13 @@
 
 <header class="navbar">
 
-  <a class="brand" href="index.html">
+  <a
+    class="brand"
+    href="index.html"
+  >
     <span>◉</span>
     Dikzz Tools
   </a>
-
 
   <nav id="navbarNav">
 
@@ -48,7 +50,6 @@
 
   </nav>
 
-
   <button
     class="menu-btn"
     onclick="toggleNav()"
@@ -60,7 +61,6 @@
 
 
 <main class="container payment-page">
-
 
   <section class="payment-hero">
 
@@ -89,9 +89,7 @@
 
     <div>
 
-      <span>
-        PLAN SEKARANG
-      </span>
+      <span>PLAN SEKARANG</span>
 
       <strong id="currentPlan">
         FREE USER
@@ -99,12 +97,9 @@
 
     </div>
 
-
     <div>
 
-      <span>
-        LIMIT
-      </span>
+      <span>LIMIT</span>
 
       <strong id="currentLimit">
         50x / hari
@@ -117,32 +112,23 @@
 
   <section class="plans">
 
-
     <article class="plan">
 
-      <small>
-        VVIP 1
-      </small>
+      <small>VVIP 1</small>
 
-      <h2>
-        500x
-      </h2>
+      <h2>500x</h2>
 
       <span>
         penggunaan / hari
       </span>
 
       <ul>
-
         <li>✓ Limit 500x sehari</li>
         <li>✓ Semua basic tools</li>
         <li>✓ Priority access</li>
-
       </ul>
 
-      <button
-        onclick="selectPlan('VVIP1')"
-      >
+      <button onclick="selectPlan('VVIP1')">
         Pilih VVIP 1
       </button>
 
@@ -155,29 +141,21 @@
         POPULAR
       </span>
 
-      <small>
-        VVIP 2
-      </small>
+      <small>VVIP 2</small>
 
-      <h2>
-        5.000x
-      </h2>
+      <h2>5.000x</h2>
 
       <span>
         penggunaan / hari
       </span>
 
       <ul>
-
         <li>✓ Limit 5.000x sehari</li>
         <li>✓ Semua tools</li>
         <li>✓ Priority access</li>
-
       </ul>
 
-      <button
-        onclick="selectPlan('VVIP2')"
-      >
+      <button onclick="selectPlan('VVIP2')">
         Pilih VVIP 2
       </button>
 
@@ -186,29 +164,21 @@
 
     <article class="plan">
 
-      <small>
-        VVIP 3
-      </small>
+      <small>VVIP 3</small>
 
-      <h2>
-        10.000x
-      </h2>
+      <h2>10.000x</h2>
 
       <span>
         penggunaan / hari
       </span>
 
       <ul>
-
         <li>✓ Limit 10.000x sehari</li>
         <li>✓ Semua tools</li>
         <li>✓ Maximum access</li>
-
       </ul>
 
-      <button
-        onclick="selectPlan('VVIP3')"
-      >
+      <button onclick="selectPlan('VVIP3')">
         Pilih VVIP 3
       </button>
 
@@ -217,12 +187,9 @@
   </section>
 
 
-  <!-- PAYMENT -->
-
   <section
     id="paymentSection"
     class="payment-box"
-    style="display:none;"
   >
 
     <div class="section-title">
@@ -230,15 +197,8 @@
       <span>💳</span>
 
       <div>
-
-        <small>
-          PAYMENT
-        </small>
-
-        <h2>
-          Pembayaran VVIP
-        </h2>
-
+        <small>PAYMENT</small>
+        <h2>Pembayaran VVIP</h2>
       </div>
 
     </div>
@@ -248,7 +208,7 @@
       id="selectedPlan"
       class="selected"
     >
-      Belum memilih paket.
+      Pilih paket VVIP terlebih dahulu.
     </div>
 
 
@@ -265,9 +225,11 @@
         onclick="copyPayment('DANA')"
       >
 
-        <div class="payment-logo dana">
-          D
-        </div>
+        <img
+          class="payment-logo-img"
+          src="assets/image/dana.jpg"
+          alt="DANA"
+        >
 
         <div>
 
@@ -291,9 +253,11 @@
         onclick="copyPayment('GOPAY')"
       >
 
-        <div class="payment-logo gopay">
-          G
-        </div>
+        <img
+          class="payment-logo-img"
+          src="assets/image/gopay.jpg"
+          alt="GoPay"
+        >
 
         <div>
 
@@ -317,9 +281,11 @@
         onclick="copyPayment('OVO')"
       >
 
-        <div class="payment-logo ovo">
-          O
-        </div>
+        <img
+          class="payment-logo-img"
+          src="assets/image/ovo.jpg"
+          alt="OVO"
+        >
 
         <div>
 
@@ -343,9 +309,11 @@
         onclick="showQRIS()"
       >
 
-        <div class="payment-logo qris">
-          QR
-        </div>
+        <img
+          class="payment-logo-img qris-img"
+          src="assets/image/qris.jpg"
+          alt="QRIS"
+        >
 
         <div>
 
@@ -375,7 +343,6 @@
     <div
       id="qrisBox"
       class="qris-box"
-      style="display:none;"
     >
 
       <h3>
@@ -388,7 +355,7 @@
       </p>
 
       <img
-        src="assets/image/qris.png"
+        src="assets/image/qris.jpg"
         alt="QRIS Dikzz Tools"
       >
 
@@ -430,7 +397,7 @@
       <div>
 
         <small>
-          FREE USER
+          🇮🇩 FREE USER
         </small>
 
         <h2>
@@ -446,7 +413,6 @@
 
     </div>
 
-
     <a
       class="outline-btn"
       href="tools.html"
@@ -460,7 +426,7 @@
 
 
 <footer>
-  © 2026 Dikzz Tools • VVIP Center
+  © 2026 Dikzz Tools • VVIP Center • 🇮🇩
 </footer>
 
 
