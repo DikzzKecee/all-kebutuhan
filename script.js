@@ -1,102 +1,375 @@
 /* =========================================================
-   NEOXR - DIKZZ
-   MAIN JAVASCRIPT
+   GLOBAL
 ========================================================= */
+
+let currentUser = null;
+let currentTool = null;
+
+let calcValue = "";
+
+let stickerImage = null;
 
 
 /* =========================================================
-   NAVBAR
+   API
+========================================================= */
+
+async function apiRequest(
+  endpoint,
+  options = {}
+) {
+
+  try {
+
+    const response = await fetch(
+      endpoint,
+      {
+        credentials: "same-origin",
+        ...options
+      }
+    );
+
+    const data =
+      await response.json();
+
+    return {
+      ok: response.ok,
+      data
+    };
+
+  } catch (error) {
+
+    console.error(error);
+
+    return {
+      ok: false,
+      data: {
+        success: false,
+        message:
+          "Server tidak dapat dihubungi."
+      }
+    };
+  }
+}
+
+
+/* =========================================================
+   CHECK LOGIN
+========================================================= */
+
+async function checkLogin() {
+
+  const result =
+    await apiRequest("/api/me");
+
+  const path =
+    window.location.pathname;
+
+  const isLoginPage =
+    path.endsWith("login.html");
+
+  if (!result.ok) {
+
+    if (!isLoginPage) {
+      window.location.href =
+        "/login.html";
+    }
+
+    return false;
+  }
+
+  currentUser =
+    result.data.user;
+
+  updateUserUI();
+
+  return true;
+}
+
+
+/* =========================================================
+   UPDATE USER UI
+========================================================= */
+
+function updateUserUI() {
+
+  if (!currentUser) return;
+
+  const plan =
+    currentUser.planName ||
+    "FREE USER";
+
+  const limit =
+    currentUser.dailyLimit || 50;
+
+  const usage =
+    currentUser.dailyUsage || 0;
+
+  const remaining =
+    currentUser.remaining ??
+    Math.max(
+      0,
+      limit - usage
+    );
+
+
+  setText(
+    "planBadge",
+    plan
+  );
+
+  setText(
+    "limitBadge",
+    `${formatNumber(limit)}x / hari`
+  );
+
+
+  setText(
+    "statPlan",
+    currentUser.plan || "FREE"
+  );
+
+  setText(
+    "statUsage",
+    formatNumber(usage)
+  );
+
+  setText(
+    "statRemaining",
+    formatNumber(remaining)
+  );
+
+  setText(
+    "statLimit",
+    formatNumber(limit)
+  );
+
+
+  setText(
+    "accountEmail",
+    currentUser.email
+  );
+
+  setText(
+    "accountPlan",
+    plan
+  );
+
+  setText(
+    "accountLimit",
+    `${formatNumber(limit)}x`
+  );
+
+
+  setText(
+    "miniAccount",
+    `${currentUser.email} • ${plan}`
+  );
+
+  setText(
+    "miniUsage",
+    `${formatNumber(usage)} / ${formatNumber(limit)}`
+  );
+
+
+  setText(
+    "currentPlan",
+    plan
+  );
+
+  setText(
+    "currentLimit",
+    `${formatNumber(limit)}x / hari`
+  );
+}
+
+
+/* =========================================================
+   TEXT HELPER
+========================================================= */
+
+function setText(id, value) {
+
+  const element =
+    document.getElementById(id);
+
+  if (element) {
+    element.textContent = value;
+  }
+}
+
+function formatNumber(number) {
+
+  return Number(number || 0)
+    .toLocaleString("id-ID");
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+async function loginUser(event) {
+
+  event.preventDefault();
+
+  const input =
+    document.getElementById("loginEmail");
+
+  const error =
+    document.getElementById("loginError");
+
+  const button =
+    document.getElementById("loginButton");
+
+  if (!input) return;
+
+  const email =
+    input.value.trim();
+
+  error.style.display = "none";
+
+  if (!email) {
+
+    error.textContent =
+      "Masukkan email terlebih dahulu.";
+
+    error.style.display = "block";
+
+    return;
+  }
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "Memproses...";
+
+
+  const result =
+    await apiRequest(
+      "/api/login",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+
+        body: JSON.stringify({
+          email
+        })
+      }
+    );
+
+
+  if (!result.ok) {
+
+    error.textContent =
+      result.data.message ||
+      "Login gagal.";
+
+    error.style.display = "block";
+
+    button.disabled = false;
+
+    button.textContent =
+      "Masuk ke Website";
+
+    return;
+  }
+
+
+  currentUser =
+    result.data.user;
+
+  window.location.href =
+    "/index.html";
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+async function logout() {
+
+  await apiRequest(
+    "/api/logout",
+    {
+      method: "POST"
+    }
+  );
+
+  window.location.href =
+    "/login.html";
+}
+
+
+/* =========================================================
+   NAV
 ========================================================= */
 
 function toggleNav() {
 
   const nav =
-    document.getElementById("navbarNav");
+    document.getElementById(
+      "navbarNav"
+    );
 
-  if (!nav) return;
-
-  nav.classList.toggle("show");
+  if (nav) {
+    nav.classList.toggle("show");
+  }
 }
 
 
-document.addEventListener("click", function (event) {
-
-  const nav =
-    document.getElementById("navbarNav");
-
-  const button =
-    document.querySelector(".menu-btn");
-
-  if (!nav || !button) return;
-
-  if (
-    nav.classList.contains("show") &&
-    !nav.contains(event.target) &&
-    !button.contains(event.target)
-  ) {
-
-    nav.classList.remove("show");
-
-  }
-
-});
-
-
 /* =========================================================
-   TOOLS SEARCH
+   FILTER
 ========================================================= */
 
-let currentCategory = "all";
-
+let activeCategory = "all";
 
 function filterTools() {
 
   const input =
     document.getElementById("search");
 
-  const cards =
-    document.querySelectorAll(".tool-card");
-
-  const noResult =
-    document.getElementById("noResult");
-
-  if (!cards.length) return;
-
-
-  const keyword =
+  const query =
     input
-      ? input.value.toLowerCase().trim()
+      ? input.value
+          .toLowerCase()
+          .trim()
       : "";
 
+  const cards =
+    document.querySelectorAll(
+      ".tool-card"
+    );
 
   let visible = 0;
 
-
-  cards.forEach(function (card) {
+  cards.forEach(card => {
 
     const name =
-      (
-        card.dataset.name ||
-        ""
-      ).toLowerCase();
-
+      card.dataset.name ||
+      "";
 
     const category =
-      card.dataset.cat || "";
+      card.dataset.cat ||
+      "";
 
+    const matchSearch =
+      !query ||
+      name.includes(query);
 
-    const searchMatch =
-      name.includes(keyword);
-
-
-    const categoryMatch =
-      currentCategory === "all" ||
-      category === currentCategory;
-
+    const matchCategory =
+      activeCategory === "all" ||
+      category === activeCategory;
 
     if (
-      searchMatch &&
-      categoryMatch
+      matchSearch &&
+      matchCategory
     ) {
 
       card.style.display = "flex";
@@ -112,6 +385,11 @@ function filterTools() {
   });
 
 
+  const noResult =
+    document.getElementById(
+      "noResult"
+    );
+
   if (noResult) {
 
     noResult.style.display =
@@ -120,40 +398,85 @@ function filterTools() {
         : "none";
 
   }
+}
 
+
+function filterCat(category, button) {
+
+  activeCategory =
+    category;
+
+  document
+    .querySelectorAll(".cat")
+    .forEach(item => {
+      item.classList.remove(
+        "active-cat"
+      );
+    });
+
+  if (button) {
+    button.classList.add(
+      "active-cat"
+    );
+  }
+
+  filterTools();
 }
 
 
 /* =========================================================
-   CATEGORY
+   USAGE
 ========================================================= */
 
-function filterCat(category, button) {
+async function useTool() {
 
-  currentCategory = category;
+  const result =
+    await apiRequest(
+      "/api/use-tool",
+      {
+        method: "POST",
 
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
 
-  document
-    .querySelectorAll(".cat")
-    .forEach(function (item) {
-
-      item.classList.remove(
-        "active-cat"
-      );
-
-    });
-
-
-  if (button) {
-
-    button.classList.add(
-      "active-cat"
+        body: JSON.stringify({
+          tool: currentTool
+        })
+      }
     );
 
+
+  if (!result.ok) {
+
+    if (
+      result.data.message ===
+      "Silakan login terlebih dahulu."
+    ) {
+
+      window.location.href =
+        "/login.html";
+
+    } else {
+
+      alert(
+        result.data.message ||
+        "Tool tidak dapat digunakan."
+      );
+
+    }
+
+    return false;
   }
 
 
-  filterTools();
+  currentUser =
+    result.data.user;
+
+  updateUserUI();
+
+  return true;
 }
 
 
@@ -161,54 +484,40 @@ function filterCat(category, button) {
    MODAL
 ========================================================= */
 
-function openTool(toolName) {
+async function openTool(tool) {
+
+  const allowed =
+    await useTool();
+
+  if (!allowed) return;
+
+  currentTool =
+    tool;
 
   const modal =
-    document.getElementById("toolModal");
+    document.getElementById(
+      "toolModal"
+    );
 
   if (!modal) return;
 
 
   document
     .querySelectorAll(".tool-panel")
-    .forEach(function (panel) {
-
-      panel.style.display = "none";
-
+    .forEach(panel => {
+      panel.style.display =
+        "none";
     });
 
 
-  if (toolName === "calculator") {
+  const target =
+    document.getElementById(
+      `${tool}Tool`
+    );
 
-    const panel =
-      document.getElementById(
-        "calculatorTool"
-      );
-
-    if (panel) {
-
-      panel.style.display = "block";
-
-      calcClear();
-
-    }
-
-  }
-
-
-  if (toolName === "sticker") {
-
-    const panel =
-      document.getElementById(
-        "stickerTool"
-      );
-
-    if (panel) {
-
-      panel.style.display = "block";
-
-    }
-
+  if (target) {
+    target.style.display =
+      "block";
   }
 
 
@@ -216,159 +525,70 @@ function openTool(toolName) {
 
   document.body.style.overflow =
     "hidden";
+
+
+  if (tool === "calculator") {
+    calcClear();
+  }
+
+  if (tool === "brat") {
+    generateBrat();
+  }
+
+  if (tool === "iqc") {
+    generateIQC();
+  }
 }
 
 
 function closeTool() {
 
   const modal =
-    document.getElementById("toolModal");
+    document.getElementById(
+      "toolModal"
+    );
 
   if (!modal) return;
 
-  modal.classList.remove("show");
+  modal.classList.remove(
+    "show"
+  );
 
   document.body.style.overflow =
     "";
-}
 
-
-document.addEventListener(
-  "keydown",
-  function (event) {
-
-    if (event.key === "Escape") {
-
-      closeTool();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   COMING SOON
-========================================================= */
-
-function showComingSoon(name) {
-
-  const modal =
-    document.getElementById("toolModal");
-
-  if (!modal) return;
-
-
-  const title =
-    document.getElementById(
-      "comingSoonTitle"
-    );
-
-
-  document
-    .querySelectorAll(".tool-panel")
-    .forEach(function (panel) {
-
-      panel.style.display = "none";
-
-    });
-
-
-  if (title) {
-
-    title.textContent = name;
-
-  }
-
-
-  const panel =
-    document.getElementById(
-      "comingSoonTool"
-    );
-
-
-  if (panel) {
-
-    panel.style.display = "block";
-
-  }
-
-
-  modal.classList.add("show");
-
-  document.body.style.overflow =
-    "hidden";
+  currentTool = null;
 }
 
 
 /* =========================================================
-   DOWNLOADER UI
+   DOWNLOADER
 ========================================================= */
 
-function openDownloader(name) {
+async function openDownloader(name) {
+
+  const allowed =
+    await useTool();
+
+  if (!allowed) return;
+
+  currentTool =
+    name;
 
   const modal =
-    document.getElementById("toolModal");
-
-  if (!modal) return;
-
-
-  document
-    .querySelectorAll(".tool-panel")
-    .forEach(function (panel) {
-
-      panel.style.display = "none";
-
-    });
-
-
-  const panel =
     document.getElementById(
-      "downloaderTool"
+      "toolModal"
     );
-
 
   const title =
     document.getElementById(
       "downloaderTitle"
     );
 
-
   const result =
     document.getElementById(
       "downloadResult"
     );
-
-
-  if (title) {
-
-    title.textContent = name;
-
-  }
-
-
-  if (result) {
-
-    result.innerHTML = "";
-
-  }
-
-
-  if (panel) {
-
-    panel.style.display = "block";
-
-  }
-
-
-  modal.classList.add("show");
-
-  document.body.style.overflow =
-    "hidden";
-}
-
-
-function processDownloader() {
 
   const input =
     document.getElementById(
@@ -376,51 +596,82 @@ function processDownloader() {
     );
 
 
+  if (!modal) return;
+
+  document
+    .querySelectorAll(".tool-panel")
+    .forEach(panel => {
+      panel.style.display =
+        "none";
+    });
+
+
+  document.getElementById(
+    "downloaderTool"
+  ).style.display =
+    "block";
+
+
+  title.textContent =
+    name;
+
+  result.innerHTML =
+    "";
+
+  input.value =
+    "";
+
+  modal.classList.add(
+    "show"
+  );
+
+  document.body.style.overflow =
+    "hidden";
+}
+
+
+async function processDownloader() {
+
+  const input =
+    document.getElementById(
+      "downloadUrl"
+    );
+
   const result =
     document.getElementById(
       "downloadResult"
     );
 
-
-  if (!input || !result) return;
-
-
-  const url =
+  const value =
     input.value.trim();
 
 
-  if (!url) {
+  if (!value) {
 
-    result.innerHTML =
-      "⚠️ Masukkan link terlebih dahulu.";
+    result.textContent =
+      "Masukkan link terlebih dahulu.";
 
     return;
   }
 
 
-  /*
-    TEMPAT API DOWNLOADER.
+  if (!/^https?:\/\//i.test(value)) {
 
-    Jangan mengarang endpoint API.
-    Setelah API yang kamu pakai sudah ada,
-    bagian ini tinggal disambungkan.
+    result.textContent =
+      "Link harus diawali http:// atau https://.";
 
-    Contoh alurnya:
-
-    fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        url: url
-      })
-    })
-  */
+    return;
+  }
 
 
   result.innerHTML =
-    "🔗 Link diterima. API downloader belum disambungkan.";
+    `
+      <div class="notice">
+        Link sudah diterima.
+        Downloader API belum dikonfigurasi
+        pada server ini.
+      </div>
+    `;
 }
 
 
@@ -428,7 +679,24 @@ function processDownloader() {
    CALCULATOR
 ========================================================= */
 
-let calcValue = "0";
+function calcInput(value) {
+
+  if (
+    calcValue.length >= 30
+  ) return;
+
+  calcValue += value;
+
+  updateCalcScreen();
+}
+
+
+function calcClear() {
+
+  calcValue = "";
+
+  updateCalcScreen();
+}
 
 
 function updateCalcScreen() {
@@ -441,315 +709,74 @@ function updateCalcScreen() {
   if (!screen) return;
 
   screen.textContent =
-    calcValue;
-}
-
-
-function calcClear() {
-
-  calcValue = "0";
-
-  updateCalcScreen();
-}
-
-
-function calcInput(value) {
-
-  if (
-    !/^[0-9.+\-*/]$/.test(value)
-  ) {
-    return;
-  }
-
-
-  if (calcValue === "Error") {
-
-    calcValue = "0";
-
-  }
-
-
-  if (calcValue === "0") {
-
-    if (
-      value >= "0" &&
-      value <= "9"
-    ) {
-
-      calcValue = value;
-
-    } else if (value === ".") {
-
-      calcValue = "0.";
-
-    } else {
-
-      calcValue += value;
-
-    }
-
-
-    updateCalcScreen();
-
-    return;
-  }
-
-
-  const last =
-    calcValue.charAt(
-      calcValue.length - 1
-    );
-
-
-  const operators =
-    ["+", "-", "*", "/"];
-
-
-  if (
-    operators.includes(value) &&
-    operators.includes(last)
-  ) {
-
-    calcValue =
-      calcValue.slice(0, -1) +
-      value;
-
-    updateCalcScreen();
-
-    return;
-  }
-
-
-  if (value === ".") {
-
-    const parts =
-      calcValue.split(
-        /[+\-*/]/
-      );
-
-
-    const currentNumber =
-      parts[parts.length - 1];
-
-
-    if (
-      currentNumber.includes(".")
-    ) {
-
-      return;
-
-    }
-
-  }
-
-
-  calcValue += value;
-
-  updateCalcScreen();
+    calcValue || "0";
 }
 
 
 function calcResult() {
 
+  if (!calcValue) return;
+
+  if (
+    !/^[0-9+\-*/.() ]+$/
+      .test(calcValue)
+  ) {
+
+    calcValue = "";
+
+    updateCalcScreen();
+
+    return;
+  }
+
+
   try {
-
-    let expression =
-      calcValue;
-
-
-    const last =
-      expression.slice(-1);
-
-
-    if (
-      ["+", "-", "*", "/"]
-        .includes(last)
-    ) {
-
-      expression =
-        expression.slice(0, -1);
-
-    }
-
-
-    if (
-      !/^[0-9+\-*/.()\s]+$/
-        .test(expression)
-    ) {
-
-      throw new Error();
-
-    }
-
 
     const result =
       Function(
-        '"use strict"; return (' +
-        expression +
-        ')'
+        `"use strict"; return (${calcValue})`
       )();
-
 
     if (
       typeof result !== "number" ||
       !Number.isFinite(result)
     ) {
-
       throw new Error();
-
     }
 
-
     calcValue =
-      String(
-        Math.round(
-          result * 100000000
-        ) / 100000000
-      );
-
+      String(result);
 
     updateCalcScreen();
 
   } catch {
 
-    calcValue = "Error";
+    calcValue = "";
 
-    updateCalcScreen();
+    const screen =
+      document.getElementById(
+        "calcScreen"
+      );
 
-
-    setTimeout(
-      calcClear,
-      900
-    );
+    if (screen) {
+      screen.textContent =
+        "Error";
+    }
 
   }
-
 }
 
 
 /* =========================================================
-   CALCULATOR KEYBOARD
+   STICKER
 ========================================================= */
-
-document.addEventListener(
-  "keydown",
-  function (event) {
-
-    const modal =
-      document.getElementById(
-        "toolModal"
-      );
-
-
-    if (
-      !modal ||
-      !modal.classList.contains(
-        "show"
-      )
-    ) {
-
-      return;
-
-    }
-
-
-    const calculator =
-      document.getElementById(
-        "calculatorTool"
-      );
-
-
-    if (
-      !calculator ||
-      calculator.style.display === "none"
-    ) {
-
-      return;
-
-    }
-
-
-    const key =
-      event.key;
-
-
-    if (
-      /^[0-9]$/.test(key) ||
-      ["+", "-", "*", "/", "."]
-        .includes(key)
-    ) {
-
-      calcInput(key);
-
-      event.preventDefault();
-
-    }
-
-
-    if (key === "Enter") {
-
-      calcResult();
-
-      event.preventDefault();
-
-    }
-
-
-    if (key === "Backspace") {
-
-      if (
-        calcValue.length > 1
-      ) {
-
-        calcValue =
-          calcValue.slice(0, -1);
-
-      } else {
-
-        calcValue = "0";
-
-      }
-
-
-      updateCalcScreen();
-
-      event.preventDefault();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   STICKER MAKER
-========================================================= */
-
-let stickerImage = null;
-
 
 function loadSticker(event) {
 
   const file =
     event.target.files?.[0];
 
-
   if (!file) return;
-
-
-  if (
-    !file.type.startsWith(
-      "image/"
-    )
-  ) {
-
-    alert(
-      "File harus berupa gambar."
-    );
-
-    return;
-
-  }
 
 
   const reader =
@@ -757,11 +784,10 @@ function loadSticker(event) {
 
 
   reader.onload =
-    function (e) {
+    function () {
 
       const image =
         new Image();
-
 
       image.onload =
         function () {
@@ -773,10 +799,8 @@ function loadSticker(event) {
 
         };
 
-
       image.src =
-        e.target.result;
-
+        reader.result;
     };
 
 
@@ -791,203 +815,117 @@ function drawSticker() {
       "stickerCanvas"
     );
 
-
   if (!canvas) return;
-
 
   const ctx =
     canvas.getContext("2d");
 
 
-  const width =
-    canvas.width;
-
-
-  const height =
-    canvas.height;
-
-
   ctx.clearRect(
     0,
     0,
-    width,
-    height
+    canvas.width,
+    canvas.height
   );
 
 
   if (!stickerImage) {
 
     ctx.fillStyle =
-      "#16101c";
-
+      "#160a24";
 
     ctx.fillRect(
       0,
       0,
-      width,
-      height
+      canvas.width,
+      canvas.height
     );
 
-
     ctx.fillStyle =
-      "#9d8ca7";
-
+      "#a99bb6";
 
     ctx.font =
-      "500 18px Inter, Arial";
-
+      "20px Inter, Arial";
 
     ctx.textAlign =
       "center";
 
+    ctx.fillText(
+      "Upload gambar terlebih dahulu",
+      256,
+      256
+    );
+
+    return;
+  }
+
+
+  const size =
+    Math.min(
+      stickerImage.width,
+      stickerImage.height
+    );
+
+  const sx =
+    (stickerImage.width - size) / 2;
+
+  const sy =
+    (stickerImage.height - size) / 2;
+
+
+  ctx.drawImage(
+    stickerImage,
+    sx,
+    sy,
+    size,
+    size,
+    0,
+    0,
+    512,
+    512
+  );
+
+
+  const text =
+    document.getElementById(
+      "stickerText"
+    )?.value.trim();
+
+
+  if (text) {
+
+    ctx.font =
+      "bold 42px Inter, Arial";
+
+    ctx.textAlign =
+      "center";
 
     ctx.textBaseline =
       "middle";
 
+    ctx.lineWidth =
+      12;
+
+    ctx.strokeStyle =
+      "#000";
+
+    ctx.strokeText(
+      text,
+      256,
+      450
+    );
+
+    ctx.fillStyle =
+      "#fff";
 
     ctx.fillText(
-      "Upload gambar terlebih dahulu",
-      width / 2,
-      height / 2
+      text,
+      256,
+      450
     );
-
-
-    return;
-
   }
-
-
-  const image =
-    stickerImage;
-
-
-  const scale =
-    Math.min(
-      width / image.width,
-      height / image.height
-    );
-
-
-  const drawWidth =
-    image.width * scale;
-
-
-  const drawHeight =
-    image.height * scale;
-
-
-  const x =
-    (width - drawWidth) / 2;
-
-
-  const y =
-    (height - drawHeight) / 2;
-
-
-  ctx.drawImage(
-    image,
-    x,
-    y,
-    drawWidth,
-    drawHeight
-  );
-
-
-  const textInput =
-    document.getElementById(
-      "stickerText"
-    );
-
-
-  const text =
-    textInput
-      ? textInput.value.trim()
-      : "";
-
-
-  if (!text) return;
-
-
-  const fontSize =
-    38;
-
-
-  ctx.font =
-    `800 ${fontSize}px Inter, Arial`;
-
-
-  ctx.textAlign =
-    "center";
-
-
-  ctx.textBaseline =
-    "bottom";
-
-
-  const textX =
-    width / 2;
-
-
-  const textY =
-    height - 22;
-
-
-  /* TEXT OUTLINE */
-
-  ctx.lineWidth = 10;
-
-  ctx.strokeStyle =
-    "#ffffff";
-
-
-  ctx.strokeText(
-    text,
-    textX,
-    textY
-  );
-
-
-  /* TEXT */
-
-  ctx.fillStyle =
-    "#111";
-
-
-  ctx.fillText(
-    text,
-    textX,
-    textY
-  );
-
 }
 
-
-/* LIVE STICKER PREVIEW */
-
-document.addEventListener(
-  "input",
-  function (event) {
-
-    if (
-      event.target?.id ===
-      "stickerText"
-    ) {
-
-      if (stickerImage) {
-
-        drawSticker();
-
-      }
-
-    }
-
-  }
-);
-
-
-/* =========================================================
-   DOWNLOAD STICKER
-========================================================= */
 
 function downloadSticker() {
 
@@ -996,155 +934,761 @@ function downloadSticker() {
       "stickerCanvas"
     );
 
-
   if (!canvas) return;
 
-
-  if (!stickerImage) {
-
-    alert(
-      "Upload gambar terlebih dahulu."
-    );
-
-    return;
-
-  }
-
-
   canvas.toBlob(
-    function (blob) {
+    blob => {
 
-      if (!blob) {
-
-        alert(
-          "Browser tidak mendukung WebP."
-        );
-
-        return;
-
-      }
-
+      if (!blob) return;
 
       const url =
-        URL.createObjectURL(
-          blob
-        );
+        URL.createObjectURL(blob);
 
+      const a =
+        document.createElement("a");
 
-      const link =
-        document.createElement(
-          "a"
-        );
-
-
-      link.href =
+      a.href =
         url;
 
+      a.download =
+        "sticker-dikzz.webp";
 
-      link.download =
-        "neoxr-dikzz-sticker.webp";
+      a.click();
 
-
-      document.body.appendChild(
-        link
-      );
-
-
-      link.click();
-
-      link.remove();
-
-
-      setTimeout(
-        function () {
-
-          URL.revokeObjectURL(
-            url
-          );
-
-        },
-        1000
-      );
+      URL.revokeObjectURL(url);
 
     },
     "image/webp",
-    .92
+    .9
   );
-
 }
 
 
 /* =========================================================
-   VVIP
+   QR
 ========================================================= */
 
-function selectPlan(planName) {
+function generateQR() {
 
-  const selected =
+  const text =
+    document.getElementById(
+      "qrText"
+    )?.value.trim();
+
+  const result =
+    document.getElementById(
+      "qrResult"
+    );
+
+
+  if (!text) {
+
+    result.innerHTML =
+      "<span>Masukkan teks atau URL.</span>";
+
+    return;
+  }
+
+
+  const encoded =
+    encodeURIComponent(text);
+
+
+  const image =
+    document.createElement("img");
+
+  image.alt =
+    "QR Code";
+
+  image.src =
+    `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}`;
+
+
+  result.innerHTML = "";
+
+  result.appendChild(image);
+}
+
+
+/* =========================================================
+   BRAT
+========================================================= */
+
+function generateBrat() {
+
+  const canvas =
+    document.getElementById(
+      "bratCanvas"
+    );
+
+  if (!canvas) return;
+
+  const ctx =
+    canvas.getContext("2d");
+
+  const text =
+    document.getElementById(
+      "bratText"
+    )?.value.trim() ||
+    "BRAT";
+
+
+  ctx.fillStyle =
+    "#8aff00";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+
+  ctx.fillStyle =
+    "#111";
+
+  ctx.font =
+    "bold 72px Arial";
+
+  ctx.textAlign =
+    "center";
+
+  ctx.textBaseline =
+    "middle";
+
+
+  wrapText(
+    ctx,
+    text,
+    canvas.width / 2,
+    canvas.height / 2,
+    600,
+    80
+  );
+}
+
+
+/* =========================================================
+   IQC
+========================================================= */
+
+function generateIQC() {
+
+  const canvas =
+    document.getElementById(
+      "iqcCanvas"
+    );
+
+  if (!canvas) return;
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  const name =
+    document.getElementById(
+      "iqcName"
+    )?.value.trim() ||
+    "Dikzz";
+
+
+  const message =
+    document.getElementById(
+      "iqcMessage"
+    )?.value.trim() ||
+    "Hello!";
+
+
+  ctx.fillStyle =
+    "#e9e9ee";
+
+  ctx.fillRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+
+  ctx.fillStyle =
+    "#ffffff";
+
+  roundRect(
+    ctx,
+    40,
+    35,
+    620,
+    430,
+    25
+  );
+
+  ctx.fill();
+
+
+  ctx.fillStyle =
+    "#111";
+
+  ctx.font =
+    "bold 26px Inter, Arial";
+
+  ctx.textAlign =
+    "left";
+
+  ctx.fillText(
+    name,
+    75,
+    85
+  );
+
+
+  ctx.fillStyle =
+    "#6e24d8";
+
+  roundRect(
+    ctx,
+    75,
+    135,
+    450,
+    100,
+    20
+  );
+
+  ctx.fill();
+
+
+  ctx.fillStyle =
+    "#fff";
+
+  ctx.font =
+    "20px Inter, Arial";
+
+
+  wrapText(
+    ctx,
+    message,
+    100,
+    175,
+    400,
+    28
+  );
+}
+
+
+/* =========================================================
+   BASE64
+========================================================= */
+
+function encodeBase64() {
+
+  const input =
+    document.getElementById(
+      "base64Input"
+    );
+
+  const output =
+    document.getElementById(
+      "base64Output"
+    );
+
+
+  try {
+
+    output.value =
+      btoa(
+        unescape(
+          encodeURIComponent(
+            input.value
+          )
+        )
+      );
+
+  } catch {
+
+    output.value =
+      "Tidak dapat encode.";
+  }
+}
+
+
+function decodeBase64() {
+
+  const input =
+    document.getElementById(
+      "base64Input"
+    );
+
+  const output =
+    document.getElementById(
+      "base64Output"
+    );
+
+
+  try {
+
+    output.value =
+      decodeURIComponent(
+        escape(
+          atob(input.value)
+        )
+      );
+
+  } catch {
+
+    output.value =
+      "Base64 tidak valid.";
+  }
+}
+
+
+/* =========================================================
+   IMAGE COMPRESSOR
+========================================================= */
+
+async function compressImage() {
+
+  const file =
+    document.getElementById(
+      "compressFile"
+    )?.files?.[0];
+
+  const result =
+    document.getElementById(
+      "compressResult"
+    );
+
+
+  if (!file) {
+
+    result.textContent =
+      "Pilih gambar terlebih dahulu.";
+
+    return;
+  }
+
+
+  const quality =
+    Number(
+      document.getElementById(
+        "compressQuality"
+      )?.value || 75
+    ) / 100;
+
+
+  const image =
+    new Image();
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload =
+    function () {
+
+      image.onload =
+        function () {
+
+          const maxWidth =
+            1600;
+
+          const scale =
+            Math.min(
+              1,
+              maxWidth /
+              image.width
+            );
+
+          const canvas =
+            document.createElement(
+              "canvas"
+            );
+
+          canvas.width =
+            image.width * scale;
+
+          canvas.height =
+            image.height * scale;
+
+
+          const ctx =
+            canvas.getContext("2d");
+
+          ctx.drawImage(
+            image,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+          );
+
+
+          canvas.toBlob(
+            blob => {
+
+              if (!blob) {
+
+                result.textContent =
+                  "Gagal melakukan kompresi.";
+
+                return;
+              }
+
+
+              const url =
+                URL.createObjectURL(
+                  blob
+                );
+
+              result.innerHTML =
+                `
+                  Berhasil dikompres.
+                  <br>
+                  Ukuran awal:
+                  ${(file.size / 1024).toFixed(1)} KB
+                  <br>
+                  Ukuran baru:
+                  ${(blob.size / 1024).toFixed(1)} KB
+                  <br><br>
+                  <a href="${url}" download="compressed-image.jpg">
+                    Download gambar
+                  </a>
+                `;
+
+            },
+            "image/jpeg",
+            quality
+          );
+
+        };
+
+      image.src =
+        reader.result;
+    };
+
+
+  reader.readAsDataURL(file);
+}
+
+
+/* =========================================================
+   URL SHORTENER
+========================================================= */
+
+async function shortenUrl() {
+
+  const input =
+    document.getElementById(
+      "shortUrlInput"
+    );
+
+  const result =
+    document.getElementById(
+      "shortUrlResult"
+    );
+
+
+  const value =
+    input.value.trim();
+
+
+  if (!value) {
+
+    result.textContent =
+      "Masukkan URL.";
+
+    return;
+  }
+
+
+  if (!/^https?:\/\//i.test(value)) {
+
+    result.textContent =
+      "URL harus diawali http:// atau https://.";
+
+    return;
+  }
+
+
+  result.textContent =
+    "Memproses...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        `https://is.gd/create.php?format=json&url=${encodeURIComponent(value)}`
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!data.shorturl) {
+      throw new Error();
+    }
+
+
+    result.innerHTML =
+      `
+        Short URL:
+        <br>
+        <a
+          href="${data.shorturl}"
+          target="_blank"
+          rel="noopener"
+        >
+          ${data.shorturl}
+        </a>
+      `;
+
+  } catch {
+
+    result.textContent =
+      "Gagal membuat short URL.";
+  }
+}
+
+
+/* =========================================================
+   CANVAS HELPERS
+========================================================= */
+
+function downloadCanvas(
+  id,
+  filename
+) {
+
+  const canvas =
+    document.getElementById(id);
+
+  if (!canvas) return;
+
+
+  const link =
+    document.createElement("a");
+
+  link.download =
+    filename;
+
+  link.href =
+    canvas.toDataURL(
+      "image/png"
+    );
+
+  link.click();
+}
+
+
+function roundRect(
+  ctx,
+  x,
+  y,
+  width,
+  height,
+  radius
+) {
+
+  ctx.beginPath();
+
+  ctx.roundRect(
+    x,
+    y,
+    width,
+    height,
+    radius
+  );
+
+  ctx.closePath();
+}
+
+
+function wrapText(
+  ctx,
+  text,
+  x,
+  y,
+  maxWidth,
+  lineHeight
+) {
+
+  const words =
+    text.split(" ");
+
+  let line = "";
+
+  const lines = [];
+
+
+  for (
+    let i = 0;
+    i < words.length;
+    i++
+  ) {
+
+    const test =
+      line +
+      words[i] +
+      " ";
+
+    const width =
+      ctx.measureText(
+        test
+      ).width;
+
+
+    if (
+      width > maxWidth &&
+      i > 0
+    ) {
+
+      lines.push(line);
+
+      line =
+        words[i] + " ";
+
+    } else {
+
+      line =
+        test;
+
+    }
+  }
+
+
+  lines.push(line);
+
+
+  const startY =
+    y -
+    ((lines.length - 1) *
+      lineHeight) / 2;
+
+
+  lines.forEach(
+    (item, index) => {
+
+      ctx.fillText(
+        item.trim(),
+        x,
+        startY +
+        index * lineHeight
+      );
+
+    }
+  );
+}
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+function selectPlan(plan) {
+
+  const names = {
+    VVIP1: "VVIP 1 — 500x / hari",
+    VVIP2: "VVIP 2 — 5.000x / hari",
+    VVIP3: "VVIP 3 — 10.000x / hari"
+  };
+
+
+  const element =
     document.getElementById(
       "selectedPlan"
     );
 
 
-  if (!selected) return;
+  if (!element) return;
 
 
-  selected.innerHTML =
-    "Paket dipilih: <strong>" +
-    escapeHTML(planName) +
-    "</strong>";
-
-
-  selected.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-
-}
-
-
-function escapeHTML(text) {
-
-  const element =
-    document.createElement(
-      "div"
-    );
-
-
-  element.textContent =
-    text;
-
-
-  return element.innerHTML;
+  element.innerHTML =
+    `
+      Paket dipilih:
+      <strong>
+        ${names[plan] || plan}
+      </strong>
+      <br>
+      Hubungi admin untuk menyelesaikan pembayaran
+      dan aktivasi VVIP.
+    `;
 }
 
 
 /* =========================================================
-   INITIALIZE
+   LOGIN PAGE
+========================================================= */
+
+async function initLoginPage() {
+
+  const path =
+    window.location.pathname;
+
+  if (
+    !path.endsWith("login.html")
+  ) {
+    return;
+  }
+
+
+  const result =
+    await apiRequest(
+      "/api/me"
+    );
+
+
+  if (result.ok) {
+
+    window.location.href =
+      "/index.html";
+
+    return;
+  }
+
+
+  const form =
+    document.getElementById(
+      "loginForm"
+    );
+
+
+  if (form) {
+
+    form.addEventListener(
+      "submit",
+      loginUser
+    );
+
+  }
+}
+
+
+/* =========================================================
+   INIT
 ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
-  function () {
+  async () => {
 
-    updateCalcScreen();
+    const path =
+      window.location.pathname;
+
+
+    if (
+      path.endsWith("login.html")
+    ) {
+
+      await initLoginPage();
+
+      return;
+    }
+
+
+    await checkLogin();
+
 
     filterTools();
-
-
-    const modal =
-      document.getElementById(
-        "toolModal"
-      );
-
-
-    if (modal) {
-
-      modal.classList.remove(
-        "show"
-      );
-
-    }
 
   }
 );

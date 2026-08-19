@@ -1,236 +1,300 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Neoxr - Dikzz — VVIP Payment</title>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Dikzz Tools — VVIP</title>
 
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-  <div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-  <!-- ================= NAVBAR ================= -->
-  <header class="navbar">
 
-    <a class="brand" href="index.html">
-      <span>◉</span>
-      Neoxr - Dikzz
+<header class="navbar">
+
+  <a class="brand" href="index.html">
+    <span>◉</span>
+    Dikzz Tools
+  </a>
+
+  <nav id="navbarNav">
+
+    <a href="index.html">
+      Profile
     </a>
 
-    <nav id="navbarNav">
+    <a href="tools.html">
+      Tools
+    </a>
 
-      <a href="index.html">
-        Profile
-      </a>
-
-      <a href="tools.html">
-        Tools
-      </a>
-
-      <a
-        class="active vvip-link"
-        href="payment.html"
-      >
-        VVIP ↗
-      </a>
-
-    </nav>
-
-    <button
-      class="menu-btn"
-      type="button"
-      onclick="toggleNav()"
+    <a
+      class="active vvip-link"
+      href="payment.html"
     >
-      ☰
-    </button>
+      VVIP
+    </a>
 
-  </header>
+  </nav>
 
+  <button
+    class="menu-btn"
+    onclick="toggleNav()"
+  >
+    ☰
+  </button>
 
-  <!-- ================= MAIN ================= -->
-  <main class="container payment-page">
-
-    <!-- HERO -->
-    <section class="payment-hero">
-
-      <div class="crown-big">
-        ♛
-      </div>
-
-      <small>
-        PREMIUM ACCESS
-      </small>
-
-      <h1>
-        Upgrade to
-        <span>VVIP</span>
-      </h1>
-
-      <p>
-        Unlock fitur premium, limit lebih tinggi,
-        dan akses tools eksklusif.
-      </p>
-
-    </section>
+</header>
 
 
-    <!-- PLANS -->
-    <section class="plans">
+<main class="container payment-page">
 
 
-      <!-- BASIC -->
-      <article class="plan">
+  <section class="payment-hero">
 
-        <small>VVIP BASIC</small>
+    <div class="crown-big">
+      ♛
+    </div>
 
-        <h2>Rp10K</h2>
+    <small>
+      PREMIUM ACCESS
+    </small>
 
-        <span>/ 30 hari</span>
+    <h1>
+      Upgrade ke
+      <span>VVIP</span>
+    </h1>
 
-        <ul>
-          <li>✓ Premium tools</li>
-          <li>✓ Limit lebih tinggi</li>
-          <li>✓ Priority processing</li>
-        </ul>
+    <p>
+      Dapatkan limit penggunaan lebih besar
+      setiap hari.
+    </p>
 
-        <button
-          type="button"
-          onclick="selectPlan('VVIP Basic - Rp10K')"
-        >
-          Pilih Paket
-        </button>
-
-      </article>
+  </section>
 
 
-      <!-- PRO -->
-      <article class="plan featured">
+  <div class="current-plan glass">
 
-        <div class="popular">
-          POPULAR
-        </div>
+    <div>
+      <span>PLAN SEKARANG</span>
+      <strong id="currentPlan">
+        FREE USER
+      </strong>
+    </div>
 
-        <small>VVIP PRO</small>
+    <div>
+      <span>LIMIT</span>
+      <strong id="currentLimit">
+        50x / hari
+      </strong>
+    </div>
 
-        <h2>Rp25K</h2>
-
-        <span>/ 90 hari</span>
-
-        <ul>
-          <li>✓ Semua fitur Basic</li>
-          <li>✓ Limit sangat tinggi</li>
-          <li>✓ Akses tools eksklusif</li>
-        </ul>
-
-        <button
-          type="button"
-          onclick="selectPlan('VVIP Pro - Rp25K')"
-        >
-          Pilih Paket
-        </button>
-
-      </article>
+  </div>
 
 
-      <!-- LIFETIME -->
-      <article class="plan">
-
-        <small>VVIP LIFETIME</small>
-
-        <h2>Rp50K</h2>
-
-        <span>/ Lifetime</span>
-
-        <ul>
-          <li>✓ Semua fitur Pro</li>
-          <li>✓ Tanpa masa aktif</li>
-          <li>✓ Priority support</li>
-        </ul>
-
-        <button
-          type="button"
-          onclick="selectPlan('VVIP Lifetime - Rp50K')"
-        >
-          Pilih Paket
-        </button>
-
-      </article>
-
-    </section>
+  <section class="plans">
 
 
-    <!-- PAYMENT -->
-    <section class="payment-box">
+    <article class="plan">
 
-      <div class="section-title">
+      <small>VVIP 1</small>
 
-        <span>₿</span>
+      <h2>
+        500x
+      </h2>
 
-        <div>
-          <small>PAYMENT</small>
-          <h2>Pembayaran VVIP</h2>
-        </div>
+      <span>
+        penggunaan / hari
+      </span>
 
-      </div>
+      <ul>
+        <li>✓ Limit 500x sehari</li>
+        <li>✓ Semua basic tools</li>
+        <li>✓ Priority access</li>
+      </ul>
 
-
-      <div class="methods">
-
-        <div>
-          <b>QRIS</b>
-          <span>
-            Scan QR untuk membayar.
-          </span>
-        </div>
-
-        <div>
-          <b>DANA</b>
-          <span>
-            Nomor pembayaran:
-            08xxxxxxxxxx
-          </span>
-        </div>
-
-        <div>
-          <b>GOPAY</b>
-          <span>
-            Nomor pembayaran:
-            08xxxxxxxxxx
-          </span>
-        </div>
-
-      </div>
-
-
-      <div class="notice">
-        ⚠️ Ganti data pembayaran di atas
-        dengan akun atau QRIS milikmu sebelum
-        website dipakai.
-      </div>
-
-
-      <div
-        class="selected"
-        id="selectedPlan"
+      <button
+        onclick="selectPlan('VVIP1')"
       >
-        Belum ada paket dipilih.
+        Pilih VVIP 1
+      </button>
+
+    </article>
+
+
+    <article class="plan featured">
+
+      <span class="popular">
+        POPULAR
+      </span>
+
+      <small>VVIP 2</small>
+
+      <h2>
+        5.000x
+      </h2>
+
+      <span>
+        penggunaan / hari
+      </span>
+
+      <ul>
+        <li>✓ Limit 5.000x sehari</li>
+        <li>✓ Semua tools</li>
+        <li>✓ Priority access</li>
+      </ul>
+
+      <button
+        onclick="selectPlan('VVIP2')"
+      >
+        Pilih VVIP 2
+      </button>
+
+    </article>
+
+
+    <article class="plan">
+
+      <small>VVIP 3</small>
+
+      <h2>
+        10.000x
+      </h2>
+
+      <span>
+        penggunaan / hari
+      </span>
+
+      <ul>
+        <li>✓ Limit 10.000x sehari</li>
+        <li>✓ Semua tools</li>
+        <li>✓ Maximum access</li>
+      </ul>
+
+      <button
+        onclick="selectPlan('VVIP3')"
+      >
+        Pilih VVIP 3
+      </button>
+
+    </article>
+
+  </section>
+
+
+  <section class="payment-box">
+
+    <div class="section-title">
+
+      <span>💳</span>
+
+      <div>
+        <small>PAYMENT</small>
+        <h2>Pembayaran VVIP</h2>
       </div>
 
-    </section>
-
-  </main>
+    </div>
 
 
-  <footer>
-    © 2026 Neoxr - Dikzz • VVIP Center
-  </footer>
+    <div class="methods">
+
+      <div>
+        <b>QRIS</b>
+        <span>
+          Hubungi admin untuk pembayaran.
+        </span>
+      </div>
+
+      <div>
+        <b>DANA</b>
+        <span>
+          Hubungi admin untuk pembayaran.
+        </span>
+      </div>
+
+      <div>
+        <b>TRANSFER</b>
+        <span>
+          Hubungi admin untuk pembayaran.
+        </span>
+      </div>
+
+    </div>
 
 
-  <script src="script.js"></script>
+    <div class="notice">
+
+      ⚠️ Setelah pembayaran selesai,
+      akun VVIP harus diaktifkan oleh admin.
+      Memilih paket di halaman ini **tidak**
+      otomatis mengubah akun menjadi VVIP.
+
+    </div>
+
+
+    <div
+      id="selectedPlan"
+      class="selected"
+    >
+      Belum memilih paket.
+    </div>
+
+  </section>
+
+
+  <div class="upgrade-banner">
+
+    <div>
+
+      <span class="crown">
+        ⚡
+      </span>
+
+      <div>
+
+        <small>FREE USER</small>
+
+        <h2>
+          Masih bisa memakai tools.
+        </h2>
+
+        <p>
+          Akun Free mendapatkan 50 penggunaan
+          setiap hari.
+        </p>
+
+      </div>
+
+    </div>
+
+    <a
+      class="outline-btn"
+      href="tools.html"
+    >
+      Kembali ke Tools
+    </a>
+
+  </div>
+
+
+</main>
+
+
+<footer>
+  © 2026 Dikzz Tools • VVIP Center
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>

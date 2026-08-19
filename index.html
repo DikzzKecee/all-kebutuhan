@@ -4,168 +4,206 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Neoxr - Dikzz — Profile</title>
+  <title>Dikzz Tools — Profile</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="bg-glow"></div>
+<div class="bg-glow"></div>
 
-  <!-- ================= NAVBAR ================= -->
-  <header class="navbar">
+<header class="navbar">
 
-    <a class="brand" href="index.html">
-      <span>◉</span>
-      Neoxr - Dikzz
-    </a>
+  <a class="brand" href="index.html">
+    <span>◉</span>
+    Dikzz Tools
+  </a>
 
-    <nav id="navbarNav">
-      <a class="active" href="index.html">Profile</a>
-      <a href="tools.html">Tools</a>
-      <a class="vvip-link" href="payment.html">VVIP ↗</a>
-    </nav>
+  <nav id="navbarNav">
+    <a class="active" href="index.html">Profile</a>
+    <a href="tools.html">Tools</a>
+    <a class="vvip-link" href="payment.html">VVIP ↗</a>
+  </nav>
 
-    <button
-      class="menu-btn"
-      type="button"
-      onclick="toggleNav()"
-      aria-label="Open menu"
-    >
-      ☰
-    </button>
+  <button
+    class="menu-btn"
+    onclick="toggleNav()"
+    aria-label="Menu"
+  >
+    ☰
+  </button>
 
-  </header>
+</header>
 
 
-  <!-- ================= MAIN ================= -->
-  <main class="container">
+<main class="container">
 
-    <!-- PROFILE -->
-    <section class="profile-hero">
+  <section class="profile-hero">
 
-      <div class="cover">
-        <div class="cover-grid"></div>
+    <div class="cover">
+      <div class="cover-grid"></div>
+    </div>
+
+    <div class="profile-card">
+
+      <div class="avatar">
+        <img
+          src="assets/image/foto index.jpg"
+          alt="Dikzz"
+        >
       </div>
 
-      <div class="profile-card">
+      <div class="profile-main">
 
-        <div class="avatar">
-          <img
-            src="assets/image/foto index.jpg"
-            alt="Neoxr - Dikzz"
-          >
+        <div class="name-row">
+          <h1>Dikzz</h1>
+          <span class="verified">✓</span>
         </div>
 
-        <div class="profile-main">
-
-          <div class="name-row">
-            <h1>Neoxr - Dikzz</h1>
-            <span class="verified">✓</span>
-          </div>
-
-          <p class="handle">
-            @yth.tuan_dikzz • Digital Utility
-          </p>
-
-          <p class="bio">
-            All-in-one tools for download, generators,
-            utilities, and everyday digital needs.
-          </p>
-
-          <div class="badges">
-            <span>🇮🇩 Indonesia</span>
-            <span>🌐 Online</span>
-            <span>⚡ Fast Tools</span>
-          </div>
-
+        <div class="handle">
+          @yth.tuan_dikzz
         </div>
 
-        <a class="primary-btn" href="tools.html">
-          Explore Tools →
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- STATS -->
-    <section class="stats">
-
-      <div>
-        <b>25+</b>
-        <span>Tools</span>
-      </div>
-
-      <div>
-        <b>24/7</b>
-        <span>Online</span>
-      </div>
-
-      <div>
-        <b>VVIP</b>
-        <span>Access</span>
-      </div>
-
-      <div>
-        <b>Fast</b>
-        <span>Service</span>
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section class="section">
-
-      <div class="section-title">
-
-        <span>✦</span>
-
-        <div>
-          <small>WELCOME</small>
-          <h2>About Neoxr - Dikzz</h2>
-        </div>
-
-      </div>
-
-      <div class="glass about">
-
-        <p>
-          Website utility dengan tampilan modern, simpel,
-          dan mobile friendly. Gunakan halaman Tools untuk
-          membuka berbagai utility seperti downloader,
-          generator, calculator, dan sticker maker.
+        <p class="bio">
+          Personal utility website untuk downloader,
+          generator, converter, calculator dan berbagai
+          tools lainnya.
         </p>
 
-        <div class="quick-links">
-
-          <a href="tools.html">
-            🛠️ Semua Tools
-          </a>
-
-          <a href="payment.html">
-            👑 Upgrade VVIP
-          </a>
-
+        <div class="badges">
+          <span>⚡ Online</span>
+          <span id="planBadge">FREE USER</span>
+          <span id="limitBadge">50x / hari</span>
         </div>
 
       </div>
 
-    </section>
+      <a
+        class="primary-btn"
+        href="tools.html"
+      >
+        Open Tools →
+      </a>
 
-  </main>
+    </div>
+
+  </section>
 
 
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    © 2026 Neoxr - Dikzz • Built for digital utility
-  </footer>
+  <section class="stats">
+
+    <div>
+      <b id="statPlan">FREE</b>
+      <span>Account</span>
+    </div>
+
+    <div>
+      <b id="statUsage">0</b>
+      <span>Used Today</span>
+    </div>
+
+    <div>
+      <b id="statRemaining">50</b>
+      <span>Remaining</span>
+    </div>
+
+    <div>
+      <b id="statLimit">50</b>
+      <span>Daily Limit</span>
+    </div>
+
+  </section>
 
 
-  <script src="script.js"></script>
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>◈</span>
+
+      <div>
+        <small>ABOUT</small>
+        <h2>Tentang Website</h2>
+      </div>
+
+    </div>
+
+    <div class="about glass">
+
+      <p>
+        Dikzz Tools dibuat sebagai pusat utility sederhana
+        dengan tampilan dark purple yang ringan dan
+        responsive.
+      </p>
+
+      <div class="quick-links">
+
+        <a href="tools.html">
+          ⚡ Semua Tools
+        </a>
+
+        <a href="payment.html">
+          ♛ VVIP Plans
+        </a>
+
+        <button
+          class="quick-link-button"
+          onclick="logout()"
+        >
+          ⇥ Logout
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <div class="section-title">
+
+      <span>◎</span>
+
+      <div>
+        <small>ACCOUNT</small>
+        <h2>Status Akun</h2>
+      </div>
+
+    </div>
+
+    <div class="account-box glass">
+
+      <div>
+        <span class="account-label">EMAIL</span>
+        <strong id="accountEmail">Loading...</strong>
+      </div>
+
+      <div>
+        <span class="account-label">PLAN</span>
+        <strong id="accountPlan">FREE USER</strong>
+      </div>
+
+      <div>
+        <span class="account-label">DAILY LIMIT</span>
+        <strong id="accountLimit">50x</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  © 2026 Dikzz Tools • Utility Center
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
