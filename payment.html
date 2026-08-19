@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
   <meta charset="UTF-8">
@@ -27,6 +28,7 @@
     Dikzz Tools
   </a>
 
+
   <nav id="navbarNav">
 
     <a href="index.html">
@@ -45,6 +47,7 @@
     </a>
 
   </nav>
+
 
   <button
     class="menu-btn"
@@ -85,17 +88,28 @@
   <div class="current-plan glass">
 
     <div>
-      <span>PLAN SEKARANG</span>
+
+      <span>
+        PLAN SEKARANG
+      </span>
+
       <strong id="currentPlan">
         FREE USER
       </strong>
+
     </div>
 
+
     <div>
-      <span>LIMIT</span>
+
+      <span>
+        LIMIT
+      </span>
+
       <strong id="currentLimit">
         50x / hari
       </strong>
+
     </div>
 
   </div>
@@ -106,7 +120,9 @@
 
     <article class="plan">
 
-      <small>VVIP 1</small>
+      <small>
+        VVIP 1
+      </small>
 
       <h2>
         500x
@@ -117,9 +133,11 @@
       </span>
 
       <ul>
+
         <li>✓ Limit 500x sehari</li>
         <li>✓ Semua basic tools</li>
         <li>✓ Priority access</li>
+
       </ul>
 
       <button
@@ -137,7 +155,9 @@
         POPULAR
       </span>
 
-      <small>VVIP 2</small>
+      <small>
+        VVIP 2
+      </small>
 
       <h2>
         5.000x
@@ -148,9 +168,11 @@
       </span>
 
       <ul>
+
         <li>✓ Limit 5.000x sehari</li>
         <li>✓ Semua tools</li>
         <li>✓ Priority access</li>
+
       </ul>
 
       <button
@@ -164,7 +186,9 @@
 
     <article class="plan">
 
-      <small>VVIP 3</small>
+      <small>
+        VVIP 3
+      </small>
 
       <h2>
         10.000x
@@ -175,9 +199,11 @@
       </span>
 
       <ul>
+
         <li>✓ Limit 10.000x sehari</li>
         <li>✓ Semua tools</li>
         <li>✓ Maximum access</li>
+
       </ul>
 
       <button
@@ -191,52 +217,29 @@
   </section>
 
 
-  <section class="payment-box">
+  <!-- PAYMENT -->
+
+  <section
+    id="paymentSection"
+    class="payment-box"
+    style="display:none;"
+  >
 
     <div class="section-title">
 
       <span>💳</span>
 
       <div>
-        <small>PAYMENT</small>
-        <h2>Pembayaran VVIP</h2>
+
+        <small>
+          PAYMENT
+        </small>
+
+        <h2>
+          Pembayaran VVIP
+        </h2>
+
       </div>
-
-    </div>
-
-
-    <div class="methods">
-
-      <div>
-        <b>QRIS</b>
-        <span>
-          Hubungi admin untuk pembayaran.
-        </span>
-      </div>
-
-      <div>
-        <b>DANA</b>
-        <span>
-          Hubungi admin untuk pembayaran.
-        </span>
-      </div>
-
-      <div>
-        <b>TRANSFER</b>
-        <span>
-          Hubungi admin untuk pembayaran.
-        </span>
-      </div>
-
-    </div>
-
-
-    <div class="notice">
-
-      ⚠️ Setelah pembayaran selesai,
-      akun VVIP harus diaktifkan oleh admin.
-      Memilih paket di halaman ini **tidak**
-      otomatis mengubah akun menjadi VVIP.
 
     </div>
 
@@ -246,6 +249,171 @@
       class="selected"
     >
       Belum memilih paket.
+    </div>
+
+
+    <div class="payment-method-title">
+      Pilih metode pembayaran
+    </div>
+
+
+    <div class="methods">
+
+
+      <button
+        class="payment-method"
+        onclick="copyPayment('DANA')"
+      >
+
+        <div class="payment-logo dana">
+          D
+        </div>
+
+        <div>
+
+          <b>DANA</b>
+
+          <span>
+            Klik untuk menyalin nomor
+          </span>
+
+        </div>
+
+        <strong>
+          COPY
+        </strong>
+
+      </button>
+
+
+      <button
+        class="payment-method"
+        onclick="copyPayment('GOPAY')"
+      >
+
+        <div class="payment-logo gopay">
+          G
+        </div>
+
+        <div>
+
+          <b>GoPay</b>
+
+          <span>
+            Klik untuk menyalin nomor
+          </span>
+
+        </div>
+
+        <strong>
+          COPY
+        </strong>
+
+      </button>
+
+
+      <button
+        class="payment-method"
+        onclick="copyPayment('OVO')"
+      >
+
+        <div class="payment-logo ovo">
+          O
+        </div>
+
+        <div>
+
+          <b>OVO</b>
+
+          <span>
+            Klik untuk menyalin nomor
+          </span>
+
+        </div>
+
+        <strong>
+          COPY
+        </strong>
+
+      </button>
+
+
+      <button
+        class="payment-method"
+        onclick="showQRIS()"
+      >
+
+        <div class="payment-logo qris">
+          QR
+        </div>
+
+        <div>
+
+          <b>QRIS</b>
+
+          <span>
+            Tampilkan QR pembayaran
+          </span>
+
+        </div>
+
+        <strong>
+          OPEN
+        </strong>
+
+      </button>
+
+    </div>
+
+
+    <div
+      id="copyMessage"
+      class="copy-message"
+    ></div>
+
+
+    <div
+      id="qrisBox"
+      class="qris-box"
+      style="display:none;"
+    >
+
+      <h3>
+        Scan QRIS
+      </h3>
+
+      <p>
+        Scan QR berikut menggunakan aplikasi
+        pembayaran kamu.
+      </p>
+
+      <img
+        src="assets/image/qris.png"
+        alt="QRIS Dikzz Tools"
+      >
+
+      <button
+        class="secondary-btn"
+        onclick="hideQRIS()"
+      >
+        Tutup QR
+      </button>
+
+    </div>
+
+
+    <div class="notice">
+
+      ⚠️ Setelah pembayaran selesai,
+      kirim bukti pembayaran kepada admin
+      untuk aktivasi VVIP.
+
+      <br><br>
+
+      Memilih paket atau menekan metode
+      pembayaran <strong>tidak otomatis
+      mengaktifkan VVIP.</strong>
+
     </div>
 
   </section>
@@ -261,7 +429,9 @@
 
       <div>
 
-        <small>FREE USER</small>
+        <small>
+          FREE USER
+        </small>
 
         <h2>
           Masih bisa memakai tools.
@@ -276,6 +446,7 @@
 
     </div>
 
+
     <a
       class="outline-btn"
       href="tools.html"
@@ -284,7 +455,6 @@
     </a>
 
   </div>
-
 
 </main>
 

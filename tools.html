@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Dikzz Tools — Tools Center</title>
+  <title>Dikzz Tools — Tools</title>
 
   <link rel="stylesheet" href="style.css">
 
@@ -26,13 +28,23 @@
     Dikzz Tools
   </a>
 
+
   <nav id="navbarNav">
-    <a href="index.html">Profile</a>
-    <a class="active" href="tools.html">Tools</a>
+
+    <a href="index.html">
+      Profile
+    </a>
+
+    <a class="active" href="tools.html">
+      Tools
+    </a>
+
     <a class="vvip-link" href="payment.html">
       VVIP ↗
     </a>
+
   </nav>
+
 
   <button
     class="menu-btn"
@@ -44,68 +56,66 @@
 </header>
 
 
-<main class="container">
+<main class="container tools-page">
+
+  <section class="tools-header">
+
+    <small>
+      UTILITY CENTER
+    </small>
+
+    <h1>
+      Semua Tools
+    </h1>
+
+    <p>
+      Gunakan berbagai utility yang tersedia.
+      Setiap penggunaan akan mengurangi limit harian.
+    </p>
 
 
-  <section class="mini-profile">
+    <div class="tool-account glass">
 
-    <div class="avatar small">
+      <div>
 
-      <img
-        src="assets/image/foto index.jpg"
-        alt="Dikzz"
-      >
+        <span>
+          ACCOUNT
+        </span>
 
-    </div>
+        <strong id="miniAccount">
+          Loading...
+        </strong>
 
-    <div>
-
-      <strong>Dikzz Tools</strong>
-
-      <span id="miniAccount">
-        Checking account...
-      </span>
-
-    </div>
-
-    <div class="mini-stats">
-      <b id="miniUsage">0 / 50</b>
-      <span>Daily Usage</span>
-    </div>
-
-  </section>
+      </div>
 
 
-  <section class="tools-head">
+      <div>
 
-    <div>
+        <span>
+          LIMIT
+        </span>
 
-      <small>UTILITY CENTER</small>
+        <strong id="miniUsage">
+          0 / 50
+        </strong>
 
-      <h1>Semua Tools</h1>
-
-      <p>
-        Pilih tools yang ingin kamu gunakan.
-      </p>
-
-    </div>
-
-
-    <div class="search">
-
-      <span>⌕</span>
-
-      <input
-        id="search"
-        type="search"
-        placeholder="Cari tools..."
-        autocomplete="off"
-        oninput="filterTools()"
-      >
+      </div>
 
     </div>
 
   </section>
+
+
+  <div class="search-box">
+
+    <input
+      id="search"
+      type="search"
+      placeholder="Cari tools..."
+      oninput="filterTools()"
+    >
+
+  </div>
 
 
   <div class="categories">
@@ -114,14 +124,14 @@
       class="cat active-cat"
       onclick="filterCat('all', this)"
     >
-      All
+      Semua
     </button>
 
     <button
       class="cat"
       onclick="filterCat('download', this)"
     >
-      Download
+      Downloader
     </button>
 
     <button
@@ -141,295 +151,293 @@
   </div>
 
 
-  <section
-    id="toolGrid"
-    class="tool-grid"
-  >
+  <section class="tools-grid">
 
 
     <article
       class="tool-card"
+      data-name="TikTok Downloader"
       data-cat="download"
-      data-name="tiktok downloader video audio"
+      onclick="openDownloader('TikTok Downloader')"
     >
 
-      <div class="tool-icon pink">♪</div>
-
-      <div class="tool-info">
-        <h3>TikTok Downloader</h3>
-        <p>Download video TikTok.</p>
+      <div class="tool-icon">
+        ♪
       </div>
 
-      <button
-        class="tool-open"
-        onclick="openDownloader('TikTok Downloader')"
-      >
-        Buka
-      </button>
+      <h3>
+        TikTok Downloader
+      </h3>
+
+      <p>
+        Download video TikTok.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
 
 
     <article
       class="tool-card"
+      data-name="YouTube Downloader"
       data-cat="download"
-      data-name="youtube downloader video audio"
+      onclick="openDownloader('YouTube Downloader')"
     >
 
-      <div class="tool-icon red">▶</div>
-
-      <div class="tool-info">
-        <h3>YouTube Downloader</h3>
-        <p>Download video atau audio.</p>
+      <div class="tool-icon">
+        ▶
       </div>
 
-      <button
-        class="tool-open"
-        onclick="openDownloader('YouTube Downloader')"
-      >
-        Buka
-      </button>
+      <h3>
+        YouTube Downloader
+      </h3>
+
+      <p>
+        Download video YouTube.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
 
 
     <article
       class="tool-card"
+      data-name="Instagram Downloader"
       data-cat="download"
-      data-name="instagram downloader reels post story"
+      onclick="openDownloader('Instagram Downloader')"
     >
 
-      <div class="tool-icon purple">◎</div>
-
-      <div class="tool-info">
-        <h3>Instagram Downloader</h3>
-        <p>Reels, post dan media.</p>
+      <div class="tool-icon">
+        ◎
       </div>
 
-      <button
-        class="tool-open"
-        onclick="openDownloader('Instagram Downloader')"
-      >
-        Buka
-      </button>
+      <h3>
+        Instagram Downloader
+      </h3>
+
+      <p>
+        Download media Instagram.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
 
 
     <article
       class="tool-card"
-      data-cat="download"
-      data-name="terabox downloader"
-    >
-
-      <div class="tool-icon blue">▣</div>
-
-      <div class="tool-info">
-        <h3>TeraBox Downloader</h3>
-        <p>Proses link file TeraBox.</p>
-      </div>
-
-      <button
-        class="tool-open"
-        onclick="openDownloader('TeraBox Downloader')"
-      >
-        Buka
-      </button>
-
-    </article>
-
-
-    <article
-      class="tool-card"
-      data-cat="generator"
-      data-name="whatsapp sticker sticker maker"
-      onclick="openTool('sticker')"
-    >
-
-      <div class="tool-icon pink">✦</div>
-
-      <div class="tool-info">
-        <h3>WhatsApp Sticker</h3>
-        <p>Buat sticker dari gambar.</p>
-      </div>
-
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('sticker')"
-      >
-        Buka
-      </button>
-
-    </article>
-
-
-    <article
-      class="tool-card"
-      data-cat="generator"
-      data-name="qr generator qr code"
-      onclick="openTool('qr')"
-    >
-
-      <div class="tool-icon orange">⌗</div>
-
-      <div class="tool-info">
-        <h3>QR Generator</h3>
-        <p>Buat QR dari teks atau URL.</p>
-      </div>
-
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('qr')"
-      >
-        Buka
-      </button>
-
-    </article>
-
-
-    <article
-      class="tool-card"
-      data-cat="generator"
-      data-name="brat generator text"
-      onclick="openTool('brat')"
-    >
-
-      <div class="tool-icon green">B</div>
-
-      <div class="tool-info">
-        <h3>Brat Generator</h3>
-        <p>Generate gambar teks sederhana.</p>
-      </div>
-
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('brat')"
-      >
-        Buka
-      </button>
-
-    </article>
-
-
-    <article
-      class="tool-card"
-      data-cat="generator"
-      data-name="iqc generator chat"
-      onclick="openTool('iqc')"
-    >
-
-      <div class="tool-icon cyan">▤</div>
-
-      <div class="tool-info">
-        <h3>IQC Generator</h3>
-        <p>Buat mockup chat image.</p>
-      </div>
-
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('iqc')"
-      >
-        Buka
-      </button>
-
-    </article>
-
-
-    <article
-      class="tool-card"
+      data-name="Calculator"
       data-cat="utility"
-      data-name="calculator kalkulator hitung"
       onclick="openTool('calculator')"
     >
 
-      <div class="tool-icon cyan">＋</div>
-
-      <div class="tool-info">
-        <h3>Calculator</h3>
-        <p>Kalkulator cepat.</p>
+      <div class="tool-icon">
+        ＋
       </div>
 
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('calculator')"
-      >
-        Buka
-      </button>
+      <h3>
+        Calculator
+      </h3>
+
+      <p>
+        Kalkulator sederhana.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
 
 
     <article
       class="tool-card"
+      data-name="Sticker Maker"
+      data-cat="generator"
+      onclick="openTool('sticker')"
+    >
+
+      <div class="tool-icon">
+        ✦
+      </div>
+
+      <h3>
+        Sticker Maker
+      </h3>
+
+      <p>
+        Buat sticker dari gambar.
+      </p>
+
+      <span>
+        Open →
+      </span>
+
+    </article>
+
+
+    <article
+      class="tool-card"
+      data-name="QR Generator"
+      data-cat="generator"
+      onclick="openTool('qr')"
+    >
+
+      <div class="tool-icon">
+        ▦
+      </div>
+
+      <h3>
+        QR Generator
+      </h3>
+
+      <p>
+        Buat QR Code dari teks atau URL.
+      </p>
+
+      <span>
+        Open →
+      </span>
+
+    </article>
+
+
+    <article
+      class="tool-card"
+      data-name="BRAT Generator"
+      data-cat="generator"
+      onclick="openTool('brat')"
+    >
+
+      <div class="tool-icon">
+        B
+      </div>
+
+      <h3>
+        BRAT Generator
+      </h3>
+
+      <p>
+        Buat gambar BRAT sederhana.
+      </p>
+
+      <span>
+        Open →
+      </span>
+
+    </article>
+
+
+    <article
+      class="tool-card"
+      data-name="IQC Generator"
+      data-cat="generator"
+      onclick="openTool('iqc')"
+    >
+
+      <div class="tool-icon">
+        IQ
+      </div>
+
+      <h3>
+        IQC Generator
+      </h3>
+
+      <p>
+        Buat tampilan chat sederhana.
+      </p>
+
+      <span>
+        Open →
+      </span>
+
+    </article>
+
+
+    <article
+      class="tool-card"
+      data-name="Base64 Encoder Decoder"
       data-cat="utility"
-      data-name="base64 converter encode decode"
       onclick="openTool('base64')"
     >
 
-      <div class="tool-icon gray">⌘</div>
-
-      <div class="tool-info">
-        <h3>Base64 Converter</h3>
-        <p>Encode dan decode Base64.</p>
+      <div class="tool-icon">
+        #
       </div>
 
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('base64')"
-      >
-        Buka
-      </button>
+      <h3>
+        Base64
+      </h3>
+
+      <p>
+        Encode dan decode Base64.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
 
 
     <article
       class="tool-card"
+      data-name="Image Compressor"
       data-cat="utility"
-      data-name="image compressor compress image"
-      onclick="openTool('compressor')"
+      onclick="openTool('compress')"
     >
 
-      <div class="tool-icon yellow">▧</div>
-
-      <div class="tool-info">
-        <h3>Image Compressor</h3>
-        <p>Kompres gambar langsung di browser.</p>
+      <div class="tool-icon">
+        ◩
       </div>
 
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('compressor')"
-      >
-        Buka
-      </button>
+      <h3>
+        Image Compressor
+      </h3>
+
+      <p>
+        Kompres ukuran gambar.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
 
 
     <article
       class="tool-card"
+      data-name="URL Shortener"
       data-cat="utility"
-      data-name="url shortener link"
       onclick="openTool('shortener')"
     >
 
-      <div class="tool-icon violet">↗</div>
-
-      <div class="tool-info">
-        <h3>URL Shortener</h3>
-        <p>Persingkat URL.</p>
+      <div class="tool-icon">
+        ↗
       </div>
 
-      <button
-        class="tool-open"
-        onclick="event.stopPropagation(); openTool('shortener')"
-      >
-        Buka
-      </button>
+      <h3>
+        URL Shortener
+      </h3>
+
+      <p>
+        Pendekkan URL.
+      </p>
+
+      <span>
+        Open →
+      </span>
 
     </article>
-
 
   </section>
 
@@ -438,52 +446,20 @@
     id="noResult"
     class="no-result"
   >
-    Tidak ada tools yang ditemukan.
-  </div>
-
-
-  <div class="upgrade-banner">
-
-    <div>
-
-      <span class="crown">♛</span>
-
-      <div>
-
-        <small>UPGRADE</small>
-
-        <h2>Butuh Limit Lebih Besar?</h2>
-
-        <p>
-          Upgrade VVIP untuk mendapatkan limit
-          hingga 10.000 penggunaan per hari.
-        </p>
-
-      </div>
-
-    </div>
-
-    <a
-      class="primary-btn"
-      href="payment.html"
-    >
-      Lihat VVIP →
-    </a>
-
+    Tools tidak ditemukan.
   </div>
 
 </main>
 
 
-<!-- ================= MODAL ================= -->
+<!-- TOOL MODAL -->
 
 <div
-  class="tool-modal"
   id="toolModal"
-  onclick="if(event.target === this) closeTool()"
+  class="modal"
 >
 
-  <div class="tool-modal-box">
+  <div class="modal-content">
 
     <button
       class="modal-close"
@@ -493,6 +469,39 @@
     </button>
 
 
+    <!-- DOWNLOADER -->
+
+    <div
+      id="downloaderTool"
+      class="tool-panel"
+    >
+
+      <small>
+        DOWNLOADER
+      </small>
+
+      <h2 id="downloaderTitle">
+        Downloader
+      </h2>
+
+      <input
+        id="downloadUrl"
+        type="url"
+        placeholder="https://..."
+      >
+
+      <button
+        class="primary-btn"
+        onclick="processDownloader()"
+      >
+        Process →
+      </button>
+
+      <div id="downloadResult"></div>
+
+    </div>
+
+
     <!-- CALCULATOR -->
 
     <div
@@ -500,44 +509,47 @@
       class="tool-panel"
     >
 
-      <small>UTILITY</small>
+      <small>
+        CALCULATOR
+      </small>
 
       <h2>Calculator</h2>
 
       <div
-        class="calc-screen"
         id="calcScreen"
+        class="calc-screen"
       >
         0
       </div>
 
+
       <div class="calc-grid">
+
+        <button onclick="calcClear()">C</button>
+        <button onclick="calcInput('/')">÷</button>
+        <button onclick="calcInput('*')">×</button>
+        <button onclick="calcInput('-')">−</button>
 
         <button onclick="calcInput('7')">7</button>
         <button onclick="calcInput('8')">8</button>
         <button onclick="calcInput('9')">9</button>
-        <button class="op" onclick="calcInput('/')">÷</button>
+        <button onclick="calcInput('+')">+</button>
 
         <button onclick="calcInput('4')">4</button>
         <button onclick="calcInput('5')">5</button>
         <button onclick="calcInput('6')">6</button>
-        <button class="op" onclick="calcInput('*')">×</button>
+        <button onclick="calcInput('.')">.</button>
 
         <button onclick="calcInput('1')">1</button>
         <button onclick="calcInput('2')">2</button>
         <button onclick="calcInput('3')">3</button>
-        <button class="op" onclick="calcInput('-')">−</button>
-
-        <button onclick="calcInput('0')">0</button>
-        <button onclick="calcInput('.')">.</button>
-        <button onclick="calcClear()">C</button>
-        <button class="op" onclick="calcInput('+')">+</button>
+        <button onclick="calcResult()">=</button>
 
         <button
-          class="equals"
-          onclick="calcResult()"
+          class="zero"
+          onclick="calcInput('0')"
         >
-          =
+          0
         </button>
 
       </div>
@@ -552,52 +564,37 @@
       class="tool-panel"
     >
 
-      <small>GENERATOR</small>
+      <small>
+        GENERATOR
+      </small>
 
-      <h2>WhatsApp Sticker</h2>
-
-      <p class="panel-desc">
-        Upload gambar, tambahkan teks jika diperlukan,
-        lalu download sebagai WebP.
-      </p>
+      <h2>Sticker Maker</h2>
 
       <input
-        id="stickerFile"
         type="file"
         accept="image/*"
         onchange="loadSticker(event)"
       >
 
-      <div class="sticker-options">
-
-        <input
-          id="stickerText"
-          type="text"
-          maxlength="80"
-          placeholder="Teks sticker..."
-        >
-
-        <button
-          class="primary-btn"
-          onclick="drawSticker()"
-        >
-          Preview
-        </button>
-
-        <button
-          class="outline-btn"
-          onclick="downloadSticker()"
-        >
-          Download WebP
-        </button>
-
-      </div>
+      <input
+        id="stickerText"
+        type="text"
+        placeholder="Tulisan sticker"
+        oninput="drawSticker()"
+      >
 
       <canvas
         id="stickerCanvas"
         width="512"
         height="512"
       ></canvas>
+
+      <button
+        class="primary-btn"
+        onclick="downloadSticker()"
+      >
+        Download Sticker
+      </button>
 
     </div>
 
@@ -609,22 +606,20 @@
       class="tool-panel"
     >
 
-      <small>GENERATOR</small>
+      <small>
+        GENERATOR
+      </small>
 
       <h2>QR Generator</h2>
 
-      <p class="panel-desc">
-        Masukkan teks atau URL untuk membuat QR.
-      </p>
-
       <input
         id="qrText"
-        class="tool-input"
-        placeholder="https://example.com"
+        type="text"
+        placeholder="Teks atau URL"
       >
 
       <button
-        class="primary-btn full-btn"
+        class="primary-btn"
         onclick="generateQR()"
       >
         Generate QR
@@ -645,36 +640,30 @@
       class="tool-panel"
     >
 
-      <small>GENERATOR</small>
+      <small>
+        GENERATOR
+      </small>
 
-      <h2>Brat Generator</h2>
+      <h2>BRAT Generator</h2>
 
       <input
         id="bratText"
-        class="tool-input"
-        maxlength="80"
-        placeholder="Masukkan teks..."
+        type="text"
+        placeholder="Tulisan BRAT"
+        oninput="generateBrat()"
       >
-
-      <button
-        class="primary-btn full-btn"
-        onclick="generateBrat()"
-      >
-        Generate
-      </button>
 
       <canvas
         id="bratCanvas"
         width="700"
         height="500"
-        class="generator-canvas"
       ></canvas>
 
       <button
-        class="outline-btn full-btn"
-        onclick="downloadCanvas('bratCanvas', 'brat.png')"
+        class="primary-btn"
+        onclick="downloadCanvas('bratCanvas','brat-dikzz.png')"
       >
-        Download PNG
+        Download
       </button>
 
     </div>
@@ -687,41 +676,36 @@
       class="tool-panel"
     >
 
-      <small>GENERATOR</small>
+      <small>
+        GENERATOR
+      </small>
 
       <h2>IQC Generator</h2>
 
       <input
         id="iqcName"
-        class="tool-input"
+        type="text"
         placeholder="Nama"
+        oninput="generateIQC()"
       >
 
-      <input
+      <textarea
         id="iqcMessage"
-        class="tool-input modal-gap"
         placeholder="Pesan"
-      >
-
-      <button
-        class="primary-btn full-btn"
-        onclick="generateIQC()"
-      >
-        Generate Chat
-      </button>
+        oninput="generateIQC()"
+      ></textarea>
 
       <canvas
         id="iqcCanvas"
         width="700"
         height="500"
-        class="generator-canvas"
       ></canvas>
 
       <button
-        class="outline-btn full-btn"
-        onclick="downloadCanvas('iqcCanvas', 'iqc.png')"
+        class="primary-btn"
+        onclick="downloadCanvas('iqcCanvas','iqc-dikzz.png')"
       >
-        Download PNG
+        Download
       </button>
 
     </div>
@@ -734,13 +718,14 @@
       class="tool-panel"
     >
 
-      <small>UTILITY</small>
+      <small>
+        UTILITY
+      </small>
 
-      <h2>Base64 Converter</h2>
+      <h2>Base64</h2>
 
       <textarea
         id="base64Input"
-        class="tool-textarea"
         placeholder="Masukkan teks..."
       ></textarea>
 
@@ -754,7 +739,7 @@
         </button>
 
         <button
-          class="outline-btn"
+          class="secondary-btn"
           onclick="decodeBase64()"
         >
           Decode
@@ -764,7 +749,6 @@
 
       <textarea
         id="base64Output"
-        class="tool-textarea"
         readonly
         placeholder="Hasil..."
       ></textarea>
@@ -772,14 +756,16 @@
     </div>
 
 
-    <!-- COMPRESSOR -->
+    <!-- COMPRESS -->
 
     <div
-      id="compressorTool"
+      id="compressTool"
       class="tool-panel"
     >
 
-      <small>UTILITY</small>
+      <small>
+        UTILITY
+      </small>
 
       <h2>Image Compressor</h2>
 
@@ -789,28 +775,26 @@
         accept="image/*"
       >
 
-      <label class="range-label">
+      <label>
         Quality
-        <input
-          id="compressQuality"
-          type="range"
-          min="10"
-          max="100"
-          value="75"
-        >
       </label>
 
+      <input
+        id="compressQuality"
+        type="range"
+        min="10"
+        max="100"
+        value="75"
+      >
+
       <button
-        class="primary-btn full-btn"
+        class="primary-btn"
         onclick="compressImage()"
       >
         Compress
       </button>
 
-      <div
-        id="compressResult"
-        class="download-result"
-      ></div>
+      <div id="compressResult"></div>
 
     </div>
 
@@ -822,67 +806,26 @@
       class="tool-panel"
     >
 
-      <small>UTILITY</small>
+      <small>
+        UTILITY
+      </small>
 
       <h2>URL Shortener</h2>
 
       <input
         id="shortUrlInput"
-        class="tool-input"
         type="url"
-        placeholder="https://..."
+        placeholder="https://example.com"
       >
 
       <button
-        class="primary-btn full-btn"
+        class="primary-btn"
         onclick="shortenUrl()"
       >
-        Shorten URL
+        Shorten
       </button>
 
-      <div
-        id="shortUrlResult"
-        class="download-result"
-      ></div>
-
-    </div>
-
-
-    <!-- DOWNLOADER -->
-
-    <div
-      id="downloaderTool"
-      class="tool-panel"
-    >
-
-      <small>DOWNLOADER</small>
-
-      <h2 id="downloaderTitle">
-        Downloader
-      </h2>
-
-      <p class="panel-desc">
-        Masukkan link yang ingin diproses.
-      </p>
-
-      <input
-        id="downloadUrl"
-        class="tool-input"
-        type="url"
-        placeholder="https://..."
-      >
-
-      <button
-        class="primary-btn full-btn"
-        onclick="processDownloader()"
-      >
-        Process →
-      </button>
-
-      <div
-        id="downloadResult"
-        class="download-result"
-      ></div>
+      <div id="shortUrlResult"></div>
 
     </div>
 
