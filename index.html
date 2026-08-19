@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -12,291 +13,73 @@
   <title>Dikzz Tools — Profile</title>
 
   <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
+<body class="login-body">
 
-<div class="bg-glow"></div>
+  <div class="bg-glow"></div>
 
 
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
+  <!-- =====================================================
+       LOGIN SECTION
+  ====================================================== -->
 
-<header class="navbar">
-
-  <a
-    class="brand"
-    href="index.html"
+  <sections
+    id="loginSection"
+    class="login-wrapper"
   >
-    <span>◉</span>
-    Dikzz Tools
-  </a>
 
+    <div class="login-card glass">
 
-  <nav id="navbarNav">
-
-    <a
-      class="active"
-      href="index.html"
-    >
-      Profile
-    </a>
-
-    <a href="tools.html">
-      Tools
-    </a>
-
-    <a
-      class="vvip-link"
-      href="payment.html"
-    >
-      VVIP ↗
-    </a>
-
-  </nav>
-
-
-  <button
-    class="menu-btn"
-    type="button"
-    onclick="toggleNav()"
-    aria-label="Menu"
-  >
-    ☰
-  </button>
-
-</header>
-
-
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
-<main class="container">
-
-
-  <!-- =======================================================
-       PROFILE
-  ======================================================== -->
-
-  <section class="profile-hero">
-
-    <div class="cover">
-
-      <div class="cover-grid"></div>
-
-    </div>
-
-
-    <div class="profile-card">
-
-      <!-- FOTO PROFILE -->
-
-      <div class="avatar">
-
-        <img
-          src="assets/image/foto%20index.jpg"
-          alt="Foto Profile Dikzz"
-        >
-
+      <div class="login-logo">
+        ◉
       </div>
 
-
-      <!-- PROFILE INFO -->
-
-      <div class="profile-main">
-
-        <div class="name-row">
-
-          <h1>
-            Dikzz
-          </h1>
-
-          <span
-            class="verified"
-            title="Verified"
-          >
-            ✓
-          </span>
-
-        </div>
-
-
-        <div class="handle">
-          @dikzz
-        </div>
-
-
-        <div class="region">
-          🇮🇩 Indonesia
-        </div>
-
-
-        <p class="bio">
-          Welcome to Dikzz Tools.
-          A simple utility center for downloading,
-          generating, converting, and other useful
-          tools in one place.
-        </p>
-
-
-        <div class="badges">
-
-          <span>
-            ⚡ Utility
-          </span>
-
-          <span>
-            🛠️ Tools
-          </span>
-
-          <span>
-            🇮🇩 Indonesia
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <!-- BUTTON -->
-
-      <div>
-
-        <a
-          class="primary-btn"
-          href="tools.html"
-        >
-          Open Tools →
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =======================================================
-       STATS
-  ======================================================== -->
-
-  <section class="stats">
-
-    <div>
-
-      <b>
-        11+
-      </b>
-
-      <span>
-        Available Tools
-      </span>
-
-    </div>
-
-
-    <div>
-
-      <b>
-        24/7
-      </b>
-
-      <span>
-        Availability
-      </span>
-
-    </div>
-
-
-    <div>
-
-      <b>
-        50x
-      </b>
-
-      <span>
-        Free Daily Limit
-      </span>
-
-    </div>
-
-
-    <div>
-
-      <b>
-        VVIP
-      </b>
-
-      <span>
-        Premium Access
-      </span>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =======================================================
-       ABOUT
-  ======================================================== -->
-
-  <section class="section">
-
-    <div class="section-title">
-
-      <span>
-        ✦
-      </span>
-
-      <div>
-
-        <small>
-          ABOUT
-        </small>
-
-        <h2>
-          Tentang Dikzz Tools
-        </h2>
-
-      </div>
-
-    </div>
-
-
-    <div class="about glass">
+      <h1>
+        Dikzz Tools
+      </h1>
 
       <p>
-        Dikzz Tools adalah utility center yang
-        menyediakan berbagai tools praktis untuk
-        kebutuhan sehari-hari. Mulai dari downloader,
-        generator, calculator, image tools, sampai
-        berbagai utility lainnya.
+        Masukkan email kamu untuk masuk
+        ke Dikzz Tools.
       </p>
 
 
-      <div class="quick-links">
+      <form id="loginForm">
 
-        <a href="tools.html">
-          🛠️ Lihat Semua Tools
-        </a>
+        <label for="loginEmail">
+          Email
+        </label>
 
-        <a href="payment.html">
-          ♛ Upgrade VVIP
-        </a>
-
-        <a
-          href="https://instagram.com/"
-          target="_blank"
-          rel="noopener noreferrer"
+        <input
+          id="loginEmail"
+          type="email"
+          placeholder="contoh@email.com"
+          autocomplete="email"
+          required
         >
-          ◎ Instagram
-        </a>
 
+
+        <button
+          type="submit"
+          class="primary-btn login-button"
+        >
+          Login →
+        </button>
+
+      </form>
+
+
+      <div
+        id="loginMessage"
+        class="login-message"
+      ></div>
+
+
+      <div class="login-note">
+        Login menggunakan email.
+        Data akun akan tersimpan di database.
       </div>
 
     </div>
@@ -305,211 +88,1261 @@
 
 
 
-  <!-- =======================================================
-       ACCOUNT
-  ======================================================== -->
+  <!-- =====================================================
+       PROFILE SECTION
+  ====================================================== -->
 
-  <section class="section">
-
-    <div class="section-title">
-
-      <span>
-        ◉
-      </span>
-
-      <div>
-
-        <small>
-          ACCOUNT
-        </small>
-
-        <h2>
-          Informasi Account
-        </h2>
-
-      </div>
-
-    </div>
+  <section
+    id="profileSection"
+    style="display:none; width:100%;"
+  >
 
 
-    <div class="account-box glass">
+    <!-- ===================================================
+         NAVBAR
+    ==================================================== -->
 
-      <div>
+    <header class="navbar">
 
-        <span class="account-label">
-          EMAIL
-        </span>
-
-        <strong id="accountEmail">
-          Guest
-        </strong>
-
-      </div>
-
-
-      <div>
-
-        <span class="account-label">
-          PLAN
-        </span>
-
-        <strong id="accountPlan">
-          FREE USER
-        </strong>
-
-      </div>
-
-
-      <div>
-
-        <span class="account-label">
-          DAILY LIMIT
-        </span>
-
-        <strong id="accountLimit">
-          50x / hari
-        </strong>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =======================================================
-       USAGE
-  ======================================================== -->
-
-  <section class="section">
-
-    <div class="section-title">
-
-      <span>
-        ◈
-      </span>
-
-      <div>
-
-        <small>
-          USAGE
-        </small>
-
-        <h2>
-          Penggunaan Hari Ini
-        </h2>
-
-      </div>
-
-    </div>
-
-
-    <div class="usage-box glass">
-
-      <div class="usage-info">
+      <a
+        class="brand"
+        href="index.html"
+      >
 
         <span>
-          Usage
+          ◉
         </span>
 
-        <strong id="usageText">
-          0 / 50
-        </strong>
+        Dikzz Tools
 
-      </div>
+      </a>
 
 
-      <div class="usage-bar">
+      <nav id="navbarNav">
 
-        <div
-          id="usageProgress"
-          class="usage-progress"
-          style="width:0%;"
-        ></div>
+        <a
+          class="active"
+          href="index.html"
+        >
+          Profile
+        </a>
 
-      </div>
+
+        <a href="tools.html">
+          Tools
+        </a>
 
 
-      <small id="remainingText">
-        Sisa 50 penggunaan hari ini.
-      </small>
+        <a
+          class="vvip-link"
+          href="payment.html"
+        >
+          VVIP ↗
+        </a>
 
-    </div>
+
+        <a
+          href="#"
+          onclick="logout(); return false;"
+        >
+          Logout
+        </a>
+
+      </nav>
+
+
+      <button
+        class="menu-btn"
+        type="button"
+        onclick="toggleNav()"
+      >
+        ☰
+      </button>
+
+    </header>
+
+
+
+    <!-- ===================================================
+         MAIN
+    ==================================================== -->
+
+    <main class="container">
+
+
+      <!-- =================================================
+           PROFILE HERO
+      ================================================== -->
+
+      <section class="profile-hero">
+
+
+        <div class="cover">
+
+          <div class="cover-grid"></div>
+
+        </div>
+
+
+
+        <div class="profile-card">
+
+
+          <!-- AVATAR -->
+
+          <div class="avatar">
+
+            <img
+              src="assets/image/foto index.jpg"
+              alt="Foto Profile Dikzz"
+            >
+
+          </div>
+
+
+
+          <!-- PROFILE INFO -->
+
+          <div class="profile-main">
+
+
+            <div class="name-row">
+
+              <h1>
+                Dikzz
+              </h1>
+
+              <span class="verified">
+                ✓
+              </span>
+
+            </div>
+
+
+            <div class="handle">
+              @yth.tuan_dikzz
+            </div>
+
+
+            <div class="region">
+              🇮🇩 Indonesia
+            </div>
+
+
+            <p class="bio">
+
+              Welcome to Dikzz Tools.
+              Simple, useful and modern utility
+              tools for everyday needs.
+
+            </p>
+
+
+            <div class="badges">
+
+              <span>
+                🇮🇩 Indonesia
+              </span>
+
+              <span>
+                Developer
+              </span>
+
+              <span>
+                Utility Tools
+              </span>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+
+            <div class="quick-links">
+
+              <a
+                href="https://www.instagram.com/yth.tuan_dikzz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📷 Instagram
+              </a>
+
+
+              <a href="tools.html">
+                🛠️ Tools
+              </a>
+
+
+              <a href="payment.html">
+                👑 VVIP
+              </a>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- BUTTON -->
+
+          <a
+            href="tools.html"
+            class="primary-btn"
+          >
+            Buka Tools →
+          </a>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           STATS
+      ================================================== -->
+
+      <section class="stats">
+
+
+        <div>
+
+          <b id="profileUsage">
+            0
+          </b>
+
+          <span>
+            Penggunaan Hari Ini
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <b id="profileLimit">
+            50
+          </b>
+
+          <span>
+            Limit Harian
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <b id="profileRemaining">
+            50
+          </b>
+
+          <span>
+            Sisa Limit
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <b id="profilePlan">
+            FREE
+          </b>
+
+          <span>
+            Current Plan
+          </span>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =================================================
+           ABOUT
+      ================================================== -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <span>
+            ✦
+          </span>
+
+          <div>
+
+            <small>
+              ABOUT
+            </small>
+
+            <h2>
+              Tentang Dikzz Tools
+            </h2>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="about glass">
+
+          <p>
+
+            Dikzz Tools adalah kumpulan utility
+            yang menyediakan berbagai tools seperti
+            downloader, generator, calculator,
+            image tools dan utility lainnya.
+
+          </p>
+
+
+          <div class="quick-links">
+
+            <a href="tools.html">
+              🛠️ Semua Tools
+            </a>
+
+
+            <a href="payment.html">
+              👑 Upgrade VVIP
+            </a>
+
+
+            <a
+              href="https://www.instagram.com/yth.tuan_dikzz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📷 Instagram
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           ACCOUNT
+      ================================================== -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <span>
+            ◉
+          </span>
+
+          <div>
+
+            <small>
+              ACCOUNT
+            </small>
+
+            <h2>
+              Informasi Akun
+            </h2>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="account-box glass">
+
+
+          <div>
+
+            <span class="account-label">
+              EMAIL
+            </span>
+
+            <strong id="accountEmail">
+              Loading...
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span class="account-label">
+              PLAN
+            </span>
+
+            <strong id="accountPlan">
+              FREE USER
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span class="account-label">
+              MEMBER SINCE
+            </span>
+
+            <strong id="accountSince">
+              Loading...
+            </strong>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           DAILY USAGE
+      ================================================== -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <span>
+            ⚡
+          </span>
+
+          <div>
+
+            <small>
+              DAILY USAGE
+            </small>
+
+            <h2>
+              Penggunaan Hari Ini
+            </h2>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="usage-box glass">
+
+
+          <div class="usage-info">
+
+            <span>
+              Pemakaian
+            </span>
+
+            <strong id="usageText">
+              0 / 50
+            </strong>
+
+          </div>
+
+
+
+          <div class="usage-bar">
+
+            <div
+              id="usageProgress"
+              class="usage-progress"
+            ></div>
+
+          </div>
+
+
+          <small>
+            Limit akan otomatis reset setiap hari.
+          </small>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           QUICK MENU
+      ================================================== -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <span>
+            ⚡
+          </span>
+
+          <div>
+
+            <small>
+              QUICK MENU
+            </small>
+
+            <h2>
+              Menu Cepat
+            </h2>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="about glass">
+
+
+          <div class="quick-links">
+
+            <a href="tools.html">
+              🛠️ Buka Semua Tools
+            </a>
+
+
+            <a href="payment.html">
+              👑 Upgrade VVIP
+            </a>
+
+
+            <a
+              href="https://www.instagram.com/yth.tuan_dikzz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📷 Follow Instagram
+            </a>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+    </main>
+
+
+
+    <!-- ===================================================
+         FOOTER
+    ==================================================== -->
+
+    <footer>
+
+      © 2026 Dikzz Tools
+      • Utility Center
+      • 🇮🇩 Indonesia
+
+    </footer>
+
 
   </section>
 
 
 
-  <!-- =======================================================
-       QUICK ACTION
-  ======================================================== -->
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
-  <section class="section">
+  <script>
 
-    <div class="section-title">
-
-      <span>
-        ⚡
-      </span>
-
-      <div>
-
-        <small>
-          QUICK ACCESS
-        </small>
-
-        <h2>
-          Mulai Sekarang
-        </h2>
-
-      </div>
-
-    </div>
-
-
-    <div class="quick-links">
-
-      <a
-        class="quick-link-button"
-        href="tools.html"
-      >
-        🛠️ Buka Tools
-      </a>
-
-
-      <a
-        class="quick-link-button"
-        href="payment.html"
-      >
-        ♛ Lihat VVIP
-      </a>
-
-    </div>
-
-  </section>
-
-</main>
+    let currentUser = null;
 
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+    /* =====================================================
+       HELPER
+    ====================================================== */
 
-<footer>
+    function setText(
+      id,
+      value
+    ) {
 
-  © 2026 Dikzz Tools • Utility Center
-
-</footer>
-
+      const element =
+        document.getElementById(id);
 
 
-<!-- =========================================================
-     SCRIPT
-========================================================= -->
+      if (element) {
 
-<script src="script.js"></script>
+        element.textContent =
+          value;
+
+      }
+
+    }
+
+
+
+    function formatNumber(
+      number
+    ) {
+
+      return Number(
+        number || 0
+      ).toLocaleString(
+        "id-ID"
+      );
+
+    }
+
+
+
+    /* =====================================================
+       SHOW LOGIN
+    ====================================================== */
+
+    function showLogin() {
+
+      const login =
+        document.getElementById(
+          "loginSection"
+        );
+
+
+      const profile =
+        document.getElementById(
+          "profileSection"
+        );
+
+
+      if (login) {
+
+        login.style.display =
+          "block";
+
+      }
+
+
+      if (profile) {
+
+        profile.style.display =
+          "none";
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       SHOW PROFILE
+    ====================================================== */
+
+    function showProfile(
+      user
+    ) {
+
+      currentUser =
+        user;
+
+
+      const login =
+        document.getElementById(
+          "loginSection"
+        );
+
+
+      const profile =
+        document.getElementById(
+          "profileSection"
+        );
+
+
+      if (login) {
+
+        login.style.display =
+          "none";
+
+      }
+
+
+      if (profile) {
+
+        profile.style.display =
+          "block";
+
+      }
+
+
+      updateProfile(
+        user
+      );
+
+    }
+
+
+
+    /* =====================================================
+       UPDATE PROFILE
+    ====================================================== */
+
+    function updateProfile(
+      user
+    ) {
+
+      if (!user) {
+
+        return;
+
+      }
+
+
+      const usage =
+        Number(
+          user.dailyUsage || 0
+        );
+
+
+      const limit =
+        Number(
+          user.dailyLimit || 50
+        );
+
+
+      const remaining =
+        Math.max(
+          0,
+          limit - usage
+        );
+
+
+
+      setText(
+        "accountEmail",
+        user.email || "-"
+      );
+
+
+      setText(
+        "accountPlan",
+        user.planName ||
+        "FREE USER"
+      );
+
+
+      setText(
+        "profileUsage",
+        formatNumber(
+          usage
+        )
+      );
+
+
+      setText(
+        "profileLimit",
+        formatNumber(
+          limit
+        )
+      );
+
+
+      setText(
+        "profileRemaining",
+        formatNumber(
+          remaining
+        )
+      );
+
+
+      setText(
+        "profilePlan",
+        user.plan ||
+        "FREE"
+      );
+
+
+      setText(
+        "usageText",
+        `${formatNumber(usage)} / ${formatNumber(limit)}`
+      );
+
+
+
+      let progress =
+        0;
+
+
+      if (limit > 0) {
+
+        progress =
+          Math.min(
+            100,
+            (
+              usage /
+              limit
+            ) * 100
+          );
+
+      }
+
+
+      const progressElement =
+        document.getElementById(
+          "usageProgress"
+        );
+
+
+      if (progressElement) {
+
+        progressElement.style.width =
+          `${progress}%`;
+
+      }
+
+
+
+      if (user.createdAt) {
+
+        const date =
+          new Date(
+            user.createdAt
+          );
+
+
+        if (
+          !Number.isNaN(
+            date.getTime()
+          )
+        ) {
+
+          setText(
+            "accountSince",
+
+            date.toLocaleDateString(
+              "id-ID",
+              {
+                day:
+                  "2-digit",
+
+                month:
+                  "long",
+
+                year:
+                  "numeric"
+              }
+            )
+          );
+
+        }
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       LOGIN
+    ====================================================== */
+
+    async function login(
+      email
+    ) {
+
+      const message =
+        document.getElementById(
+          "loginMessage"
+        );
+
+
+      if (message) {
+
+        message.style.display =
+          "none";
+
+        message.textContent =
+          "";
+
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            "/login",
+            {
+              method:
+                "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              credentials:
+                "same-origin",
+
+              body:
+                JSON.stringify({
+                  email:
+                    email
+                })
+            }
+          );
+
+
+        const contentType =
+          response.headers.get(
+            "content-type"
+          ) || "";
+
+
+        if (
+          !contentType.includes(
+            "application/json"
+          )
+        ) {
+
+          const html =
+            await response.text();
+
+
+          console.error(
+            "Server response:",
+            html
+          );
+
+
+          throw new Error(
+            "Server login mengembalikan HTML, bukan JSON."
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          !response.ok ||
+          !data.success
+        ) {
+
+          throw new Error(
+            data.message ||
+            "Login gagal."
+          );
+
+        }
+
+
+        showProfile(
+          data.user
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          "Login error:",
+          error
+        );
+
+
+        if (message) {
+
+          message.textContent =
+            error.message ||
+            "Login gagal.";
+
+          message.style.display =
+            "block";
+
+        }
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       LOGIN FORM
+    ====================================================== */
+
+    const loginForm =
+      document.getElementById(
+        "loginForm"
+      );
+
+
+    if (loginForm) {
+
+      loginForm.addEventListener(
+        "submit",
+
+        async function(
+          event
+        ) {
+
+          event.preventDefault();
+
+
+          const input =
+            document.getElementById(
+              "loginEmail"
+            );
+
+
+          const email =
+            String(
+              input?.value ||
+              ""
+            )
+              .trim()
+              .toLowerCase();
+
+
+          if (!email) {
+
+            return;
+
+          }
+
+
+          const button =
+            loginForm.querySelector(
+              "button[type='submit']"
+            );
+
+
+          if (button) {
+
+            button.disabled =
+              true;
+
+            button.textContent =
+              "Logging in...";
+
+          }
+
+
+          try {
+
+            await login(
+              email
+            );
+
+          } finally {
+
+            if (button) {
+
+              button.disabled =
+                false;
+
+              button.textContent =
+                "Login →";
+
+            }
+
+          }
+
+        }
+      );
+
+    }
+
+
+
+    /* =====================================================
+       CHECK CURRENT USER
+    ====================================================== */
+
+    async function checkCurrentUser() {
+
+      try {
+
+        const response =
+          await fetch(
+            "/current-user",
+            {
+              method:
+                "GET",
+
+              credentials:
+                "same-origin",
+
+              cache:
+                "no-store"
+            }
+          );
+
+
+        if (
+          response.status ===
+          401
+        ) {
+
+          showLogin();
+
+          return;
+
+        }
+
+
+        const contentType =
+          response.headers.get(
+            "content-type"
+          ) || "";
+
+
+        if (
+          !contentType.includes(
+            "application/json"
+          )
+        ) {
+
+          showLogin();
+
+          return;
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        if (
+          data.success &&
+          data.user
+        ) {
+
+          showProfile(
+            data.user
+          );
+
+        } else {
+
+          showLogin();
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "Current user error:",
+          error
+        );
+
+
+        showLogin();
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       LOGOUT
+    ====================================================== */
+
+    async function logout() {
+
+      try {
+
+        await fetch(
+          "/logout",
+          {
+            method:
+              "GET",
+
+            credentials:
+              "same-origin"
+          }
+        );
+
+      } catch (error) {
+
+        console.error(
+          error
+        );
+
+      }
+
+
+      currentUser =
+        null;
+
+
+      showLogin();
+
+
+      const input =
+        document.getElementById(
+          "loginEmail"
+        );
+
+
+      if (input) {
+
+        input.value =
+          "";
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       NAVBAR
+    ====================================================== */
+
+    function toggleNav() {
+
+      const nav =
+        document.getElementById(
+          "navbarNav"
+        );
+
+
+      if (nav) {
+
+        nav.classList.toggle(
+          "show"
+        );
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       START
+    ====================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        checkCurrentUser();
+
+      }
+    );
+
+  </script>
 
 </body>
 
